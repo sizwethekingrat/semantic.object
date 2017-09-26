@@ -22,7 +22,18 @@ public enum PartOfSpeech{
     preposition("preposition"),
     interjection("interjection"),
     pronoun("pronoun");
+
+    static boolean isPartOfSpeech(String toString) {
+        try{
+            PartOfSpeech.valueOf(toString);
+            return true;
+        }catch(IllegalArgumentException e){
+            return false;
+        } //To change body of generated methods, choose Tools | Templates.
+    }
     
-    PartOfSpeech(String name){}
+ 
+    PartOfSpeech(String name){    
+    }
    
 }
