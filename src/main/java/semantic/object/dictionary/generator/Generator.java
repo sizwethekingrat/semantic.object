@@ -9,10 +9,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -30,10 +28,6 @@ public class Generator {
             //JsonNode dictMap = new HashMap<String,Map>();
         JsonNode dictMap  = mapper.readTree(file);
         Set<Definition> defs = new HashSet<>();
-                    System.out.println(dictMap.get("student"));
-            System.out.println(dictMap.get("name"));
-            System.out.println(dictMap.get("name").get("original_cased_word"));
-            System.out.println(dictMap.get("name").get("definitions").iterator().next().get("part_of_speech"));
         dictMap.forEach(word -> {
               word.get("definitions").elements().forEachRemaining(subdef -> {
                   
@@ -51,5 +45,37 @@ public class Generator {
         List<Definition> defsList = new ArrayList<>();
         defsList.addAll(defs);
         return defsList;
+    }
+
+    public static boolean generateLibrary(List<Definition> definitions) {
+        Map<PartOfSpeech, List<Definition>> groupedDict = definitions.stream().collect(Collectors.groupingBy(Definition::getPart_of_speech));
+        groupedDict.keySet().forEach(pos -> {
+
+            switch (pos)
+            {
+                case adjective:
+                    AdjectiveGenerator.generate(groupedDict.get(pos));
+                    break;
+                case adverb:
+                    break;
+                case conjunction:
+                    break;
+                case interjection:
+                    System.out.println("Working for the man :)");
+                    break;
+                case noun:
+                    System.out.println("TGIF ");
+                    break;
+                case preposition:
+                    break;
+                case pronoun:
+                    System.out.println("Ahh, the weekend ...");
+                    break;
+                case verb:
+
+                default:        System.out.println("What day is it?");;
+            }
+        });
+        return false;
     }
 }

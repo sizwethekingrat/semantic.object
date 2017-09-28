@@ -14,12 +14,17 @@ import semantic.object.dictionary.generator.Generator;
  *
  * @author Sizwe
  */
-public class Dictionary {
+public final class Dictionary {
 
     public List<Definition> definitions;
     
     public Dictionary() throws IOException{
         definitions = Generator.generateDictionary();
+    }
+    
+    public boolean buildLibrary(){
+        Generator.generateLibrary();
+        return true;
     }
     
 }

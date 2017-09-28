@@ -17,7 +17,7 @@
 
     <organization>
         <!-- Used as the 'Vendor' for JNLP generation -->
-        <name>Your Organisation</name>
+        <name>Semantic Solutions</name>
     </organization>
 
     <build>
@@ -175,12 +175,26 @@
             </plugin>
         </plugins>
     </build>
+    
     <dependencies>
+        <dependency>
+            <groupId>org.eclipse.jdt</groupId>
+            <artifactId>core</artifactId>
+            <version>3.4.2.v_883_R34x</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.jboss.weld.vertx</groupId>
+            <artifactId>weld-vertx-web</artifactId>
+            <version>1.1.1.Final</version>
+        </dependency>
+
         <dependency>
             <groupId>org.neo4j</groupId>
             <artifactId>neo4j-slf4j</artifactId>
             <version>3.1.0-M10</version>
         </dependency>
+        
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>

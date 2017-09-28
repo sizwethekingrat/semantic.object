@@ -58,6 +58,8 @@ public class DictionaryTest {
             groupedDict.forEach((ent, val) -> {
                 System.out.println(ent +": "+val.size());
             });
+
+             assertTrue(dict.buildLibrary());
          } catch (Exception e){
             e.printStackTrace();
             Assert.error();

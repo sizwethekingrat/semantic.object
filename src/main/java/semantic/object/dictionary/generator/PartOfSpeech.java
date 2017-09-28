@@ -14,14 +14,14 @@ public enum PartOfSpeech{
     /**
      *
      */
-    noun("noun"),
-    verb("verb"),
-    adjective("adjective"),
-    adverb("adverb"),
-    conjunction("conjunction"),
-    preposition("preposition"),
-    interjection("interjection"),
-    pronoun("pronoun");
+    noun("noun","thing"),
+    verb("verb","action"),
+    adjective("adjective","thing.describer"),
+    adverb("adverb","action.describer"),
+    conjunction("conjunction","joiner"),
+    preposition("preposition","pointer"),
+    interjection("interjection","tone"),
+    pronoun("pronoun","name");
 
     static boolean isPartOfSpeech(String toString) {
         try{
@@ -32,8 +32,30 @@ public enum PartOfSpeech{
         } //To change body of generated methods, choose Tools | Templates.
     }
     
+    private String name, actual;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getActual() {
+        return actual;
+    }
+
+    public void setActual(String actual) {
+        this.actual = actual;
+    }
+    
+    
  
-    PartOfSpeech(String name){    
+    PartOfSpeech(String name, String actual){    
+        this.name = name;
+        this.actual = actual;
+              
     }
    
 }
