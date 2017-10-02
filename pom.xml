@@ -18,6 +18,11 @@
         <jackson-2-version>2.9.1</jackson-2-version>
     </properties>
 
+    <modules>
+        <module>graph</module>
+        <module>view</module>
+    </modules>
+
     <organization>
         <!-- Used as the 'Vendor' for JNLP generation -->
         <name>Semantic Solutions</name>

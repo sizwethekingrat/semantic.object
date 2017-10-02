@@ -14,16 +14,18 @@ import semantic.object.domain.meta.structure.Thing;
  *
  * @author Sizwe
  */
-@noun(type=noun.Type.PROPER_NOUN)
-public class User {
-    
-    public class user {
-        @must.have
-        @noun(type=noun.Type.ORDINARY)
-        public String[] names;
 
-        @must.have
-        @noun(type=noun.Type.ORDINARY)
-        public String surname;
-    }
+public class User {
+
+        public String name;
+
+        public String password;
+
+        public boolean register(String name, String password){
+            return name.equals(this.name) && password.equals(this.password);
+        }
+
+        public boolean login(String name, String password){
+            return name.equals(this.name) && password.equals(this.password);
+        }
 }

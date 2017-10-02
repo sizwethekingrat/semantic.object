@@ -39,7 +39,7 @@ public class AdjectiveGenerator {
 
             final NormalAnnotation eventHandlerAnnotation = ast.newNormalAnnotation();
             eventHandlerAnnotation.setTypeName(ast.newName("Target"));
-            eventHandlerAnnotation.values().add(createAnnotationMember(ast, "value", "ElementType.TYPE"));
+            eventHandlerAnnotation.values().add(createAnnotationMember(ast, "value", "ElementType"));
             //eventHandlerAnnotation.values().add(createQualifiedAnnotationMember(ast, "Target", "IsWorkbenchTest", "Blab"));
 //            cu.structuralPropertiesForType().add(eventHandlerAnnotation);
             annotation.modifiers().add(eventHandlerAnnotation);

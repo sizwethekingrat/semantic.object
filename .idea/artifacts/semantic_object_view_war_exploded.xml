@@ -4,7 +4,7 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="semantic.object.view" />
+          <element id="module-output" name="view" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.1" />
@@ -44,10 +44,10 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/../semantic.object.view/target/semantic.object.view-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/view/target/semantic.object.view-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="semantic.object.view/web/Web" />
-      <element id="gwt-compiler-output" facet="semantic.object.view/gwt/GWT" />
+      <element id="javaee-facet-resources" facet="view/web/Web" />
+      <element id="gwt-compiler-output" facet="view/gwt/GWT" />
     </root>
   </artifact>
 </component>
