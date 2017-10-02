@@ -23,7 +23,7 @@ public final class Dictionary {
     }
     
     public boolean buildLibrary(){
-        Generator.generateLibrary();
+        Generator.generateLibrary(definitions);
         return true;
     }
     

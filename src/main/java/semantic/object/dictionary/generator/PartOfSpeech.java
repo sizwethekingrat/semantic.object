@@ -16,10 +16,10 @@ public enum PartOfSpeech{
      */
     noun("noun","thing"),
     verb("verb","action"),
-    adjective("adjective","thing.describer"),
-    adverb("adverb","action.describer"),
-    conjunction("conjunction","joiner"),
-    preposition("preposition","pointer"),
+    adjective("adjective","thing.describe"),
+    adverb("adverb","action.describe"),
+    conjunction("conjunction","join"),
+    preposition("preposition","point"),
     interjection("interjection","tone"),
     pronoun("pronoun","name");
 

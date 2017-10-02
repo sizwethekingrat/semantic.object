@@ -60,6 +60,8 @@ public class DictionaryTest {
             });
 
              assertTrue(dict.buildLibrary());
+
+             assertTrue(true);
          } catch (Exception e){
             e.printStackTrace();
             Assert.error();

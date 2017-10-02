@@ -25,7 +25,6 @@ public class Generator {
     private static List<Definition> getGenerated() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         File file = new File("./src/main/resources/dictionary-master/dictionary.json");
-            //JsonNode dictMap = new HashMap<String,Map>();
         JsonNode dictMap  = mapper.readTree(file);
         Set<Definition> defs = new HashSet<>();
         dictMap.forEach(word -> {
@@ -72,8 +71,9 @@ public class Generator {
                     System.out.println("Ahh, the weekend ...");
                     break;
                 case verb:
-
-                default:        System.out.println("What day is it?");;
+                    break;
+                default:
+                    System.out.println("What day is it?");;
             }
         });
         return false;

@@ -5,7 +5,10 @@
     <groupId>semantic.object</groupId>
     <artifactId>semantic.object</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <modules>
+        <module>graph</module>
+    </modules>
+    <packaging>pom</packaging>
 
     <name>semantic.object</name>
 
@@ -181,6 +184,12 @@
             <groupId>org.eclipse.jdt</groupId>
             <artifactId>core</artifactId>
             <version>3.4.2.v_883_R34x</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.equinox</groupId>
+            <artifactId>common</artifactId>
+            <version>3.6.200-v20130402-1505</version>
         </dependency>
         
         <dependency>
