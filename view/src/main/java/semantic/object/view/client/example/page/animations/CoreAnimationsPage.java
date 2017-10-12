@@ -1,7 +1,7 @@
 package semantic.object.view.client.example.page.animations;
 
-import gwt.material.demo.errai.client.page.AbstractPage;
-import gwt.material.demo.errai.client.page.PageCategory;
+import semantic.object.view.client.example.page.AbstractPage;
+import semantic.object.view.client.example.page.PageCategory;
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.client.constants.ButtonType;
 import gwt.material.design.client.constants.Color;

@@ -22,8 +22,8 @@ package semantic.object.view.client.example.page.addins.table.service;
 
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import gwt.material.demo.errai.client.page.addins.table.model.People;
-import gwt.material.demo.errai.client.page.addins.table.model.People;
+import semantic.object.view.client.example.page.addins.table.model.People;
+import semantic.object.view.client.example.page.addins.table.model.People;
 
 import java.util.List;
 

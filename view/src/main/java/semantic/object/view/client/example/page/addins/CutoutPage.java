@@ -1,9 +1,9 @@
 package semantic.object.view.client.example.page.addins;
 
-import gwt.material.demo.errai.client.events.CodeCutOutEvent;
-import gwt.material.demo.errai.client.events.SearchCutOutEvent;
-import gwt.material.demo.errai.client.page.AbstractPage;
-import gwt.material.demo.errai.client.page.PageCategory;
+import semantic.object.view.client.example.events.CodeCutOutEvent;
+import semantic.object.view.client.example.events.SearchCutOutEvent;
+import semantic.object.view.client.example.page.AbstractPage;
+import semantic.object.view.client.example.page.PageCategory;
 import gwt.material.design.client.constants.IconSize;
 import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.ui.MaterialButton;

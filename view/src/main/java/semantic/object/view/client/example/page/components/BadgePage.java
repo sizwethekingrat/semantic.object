@@ -1,8 +1,8 @@
 package semantic.object.view.client.example.page.components;
 
 import com.google.gwt.dom.client.Style;
-import gwt.material.demo.errai.client.page.AbstractPage;
-import gwt.material.demo.errai.client.page.PageCategory;
+import semantic.object.view.client.example.page.AbstractPage;
+import semantic.object.view.client.example.page.PageCategory;
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.client.constants.IconPosition;
 import gwt.material.design.client.constants.IconType;

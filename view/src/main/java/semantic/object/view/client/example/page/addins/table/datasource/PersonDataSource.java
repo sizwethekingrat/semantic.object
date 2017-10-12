@@ -23,9 +23,9 @@ package semantic.object.view.client.example.page.addins.table.datasource;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import gwt.material.demo.errai.client.page.addins.table.model.People;
-import gwt.material.demo.errai.client.page.addins.table.model.Person;
-import gwt.material.demo.errai.client.page.addins.table.service.PersonServiceAsync;
+import semantic.object.view.client.example.page.addins.table.model.People;
+import semantic.object.view.client.example.page.addins.table.model.Person;
+import semantic.object.view.client.example.page.addins.table.service.PersonServiceAsync;
 import gwt.material.design.client.data.DataSource;
 import gwt.material.design.client.data.component.CategoryComponent;
 import gwt.material.design.client.data.loader.LoadCallback;
@@ -46,25 +46,25 @@ public class PersonDataSource implements DataSource<Person> {
     @Override
     public void load(LoadConfig<Person> loadConfig, LoadCallback<Person> callback) {
         List<CategoryComponent> categories = loadConfig.getOpenCategories();
-        List<String> categoryNames = categories.stream().map(CategoryComponent::getCategory).collect(Collectors.toList());
+        List<String> categoryNames = categories.stream().map(CategoryComponent::getName).collect(Collectors.toList());
 
         personService.getPeople(loadConfig.getOffset(), loadConfig.getLimit(), categoryNames,
                 new AsyncCallback<People>() {
                     @Override
                     public void onSuccess(People people) {
-                        callback.onSuccess(new LoadResult<Person>() {
-                            @Override
-                            public List<Person> getData() {
-                                return people;
-                            }
-                            @Override
-                            public int getOffset() {
-                                return loadConfig.getOffset();
-                            }
-                            @Override
-                            public int getTotalLength() {
-                                return people.getAbsoluteTotal();
-                            }
+                        callback.onSuccess(new LoadResult<Person>(people, loadConfig.getOffset(), people.getAbsoluteTotal()) {
+//                            @Override
+//                            public List<Person> getData() {
+//                                return people;
+//                            }
+//                            @Override
+//                            public int getOffset() {
+//                                return loadConfig.getOffset();
+//                            }
+//                            @Override
+//                            public int getTotalLength() {
+//                                return people.getAbsoluteTotal();
+//                            }
                         });
                     }
                     @Override

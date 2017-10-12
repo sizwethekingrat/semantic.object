@@ -1,14 +1,14 @@
 package semantic.object.view.client.example.page.components;
 
-import gwt.material.demo.errai.client.dto.DataHelper;
-import gwt.material.demo.errai.client.dto.UserOracle;
-import gwt.material.demo.errai.client.dto.DataHelper;
-import gwt.material.demo.errai.client.dto.User;
-import gwt.material.demo.errai.client.dto.UserOracle;
-import gwt.material.demo.errai.client.page.AbstractPage;
-import gwt.material.demo.errai.client.page.PageCategory;
-import gwt.material.demo.errai.client.page.AbstractPage;
-import gwt.material.demo.errai.client.page.PageCategory;
+import semantic.object.view.client.example.dto.DataHelper;
+import semantic.object.view.client.example.dto.UserOracle;
+import semantic.object.view.client.example.dto.DataHelper;
+import semantic.object.view.client.example.dto.User;
+import semantic.object.view.client.example.dto.UserOracle;
+import semantic.object.view.client.example.page.AbstractPage;
+import semantic.object.view.client.example.page.PageCategory;
+import semantic.object.view.client.example.page.AbstractPage;
+import semantic.object.view.client.example.page.PageCategory;
 import gwt.material.design.addins.client.autocomplete.MaterialAutoComplete;
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.addins.client.timepicker.MaterialTimePicker;

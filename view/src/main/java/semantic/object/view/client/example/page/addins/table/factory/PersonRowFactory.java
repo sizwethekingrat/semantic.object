@@ -1,17 +1,16 @@
 package semantic.object.view.client.example.page.addins.table.factory;
 
-import gwt.material.demo.errai.client.page.addins.table.model.Person;
-import gwt.material.demo.errai.client.page.addins.table.model.Person;
+import semantic.object.view.client.example.page.addins.table.model.Person;
 import gwt.material.design.client.data.component.RowComponent;
 import gwt.material.design.client.data.factory.RowComponentFactory;
 
 public class PersonRowFactory extends RowComponentFactory<Person> {
 
-    @Override
-    public RowComponent<Person> generate(Person model) {
-        // We won't change the way it loads the RowComponent
-        return super.generate(model);
-    }
+//    @Override
+//    public RowComponent<Person> generate(Person model) {
+//        // We won't change the way it loads the RowComponent
+//        return super.generate(model);
+//    }
 
     @Override
     public String getCategory(Person model) {

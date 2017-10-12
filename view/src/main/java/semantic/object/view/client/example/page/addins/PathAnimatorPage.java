@@ -2,10 +2,10 @@ package semantic.object.view.client.example.page.addins;
 
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.dom.client.ClickHandler;
-import gwt.material.demo.errai.client.page.AbstractPage;
-import gwt.material.demo.errai.client.page.PageCategory;
-import gwt.material.demo.errai.client.page.AbstractPage;
-import gwt.material.demo.errai.client.page.PageCategory;
+import semantic.object.view.client.example.page.AbstractPage;
+import semantic.object.view.client.example.page.PageCategory;
+import semantic.object.view.client.example.page.AbstractPage;
+import semantic.object.view.client.example.page.PageCategory;
 import gwt.material.design.addins.client.overlay.MaterialOverlay;
 import gwt.material.design.addins.client.pathanimator.MaterialPathAnimator;
 import gwt.material.design.client.constants.*;

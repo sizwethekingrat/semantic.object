@@ -1,8 +1,8 @@
 package semantic.object.view.client.example.page;
 
 import com.google.gwt.user.client.ui.Composite;
-import gwt.material.demo.errai.client.events.PageChangeEvent;
-import gwt.material.demo.errai.client.events.PageChangeEvent;
+import semantic.object.view.client.example.events.PageChangeEvent;
+import semantic.object.view.client.example.events.PageChangeEvent;
 import gwt.material.design.client.constants.Color;
 import gwt.material.design.jquery.client.api.JQueryElement;
 import org.jboss.errai.ui.nav.client.local.PageShown;

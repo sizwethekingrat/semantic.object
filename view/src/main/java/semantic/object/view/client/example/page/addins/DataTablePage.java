@@ -5,23 +5,23 @@ import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import gwt.material.demo.errai.client.page.AbstractPage;
-import gwt.material.demo.errai.client.page.PageCategory;
-import gwt.material.demo.errai.client.page.addins.table.datasource.PersonDataSource;
-import gwt.material.demo.errai.client.page.addins.table.factory.CustomCategoryFactory;
-import gwt.material.demo.errai.client.page.addins.table.factory.PersonRowFactory;
-import gwt.material.demo.errai.client.page.addins.table.model.Person;
-import gwt.material.demo.errai.client.page.addins.table.renderer.CustomRenderer;
-import gwt.material.demo.errai.client.page.addins.table.service.FakePersonService;
-import gwt.material.demo.errai.client.page.addins.table.service.PersonServiceAsync;
-import gwt.material.demo.errai.client.page.AbstractPage;
-import gwt.material.demo.errai.client.page.PageCategory;
-import gwt.material.demo.errai.client.page.addins.table.datasource.PersonDataSource;
-import gwt.material.demo.errai.client.page.addins.table.factory.CustomCategoryFactory;
-import gwt.material.demo.errai.client.page.addins.table.factory.PersonRowFactory;
-import gwt.material.demo.errai.client.page.addins.table.model.Person;
-import gwt.material.demo.errai.client.page.addins.table.renderer.CustomRenderer;
-import gwt.material.demo.errai.client.page.addins.table.service.FakePersonService;
+import semantic.object.view.client.example.page.AbstractPage;
+import semantic.object.view.client.example.page.PageCategory;
+import semantic.object.view.client.example.page.addins.table.datasource.PersonDataSource;
+import semantic.object.view.client.example.page.addins.table.factory.CustomCategoryFactory;
+import semantic.object.view.client.example.page.addins.table.factory.PersonRowFactory;
+import semantic.object.view.client.example.page.addins.table.model.Person;
+import semantic.object.view.client.example.page.addins.table.renderer.CustomRenderer;
+import semantic.object.view.client.example.page.addins.table.service.FakePersonService;
+import semantic.object.view.client.example.page.addins.table.service.PersonServiceAsync;
+import semantic.object.view.client.example.page.AbstractPage;
+import semantic.object.view.client.example.page.PageCategory;
+import semantic.object.view.client.example.page.addins.table.datasource.PersonDataSource;
+import semantic.object.view.client.example.page.addins.table.factory.CustomCategoryFactory;
+import semantic.object.view.client.example.page.addins.table.factory.PersonRowFactory;
+import semantic.object.view.client.example.page.addins.table.model.Person;
+import semantic.object.view.client.example.page.addins.table.renderer.CustomRenderer;
+import semantic.object.view.client.example.page.addins.table.service.FakePersonService;
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.addins.client.popupmenu.MaterialPopupMenu;
 import gwt.material.design.client.base.MaterialWidget;
@@ -332,10 +332,10 @@ public class DataTablePage extends AbstractPage {
         table.setRenderer(new CustomRenderer<>());
 
         Column<Person, ?> imageCol = new WidgetColumn<Person, MaterialImage>() {
-            @Override
-            public TextAlign getTextAlign() {
-                return TextAlign.CENTER;
-            }
+//            @Override
+//            public TextAlign getTextAlign() {
+//                return TextAlign.CENTER;
+//            }
 
             @Override
             public MaterialImage getValue(Person object) {
@@ -350,10 +350,10 @@ public class DataTablePage extends AbstractPage {
         table.addColumn(imageCol, "Picture");
 
         table.addColumn(new TextColumn<Person>() {
-            @Override
-            public Comparator<? super RowComponent<Person>> getSortComparator() {
-                return (o1, o2) -> o1.getData().getFirstName().compareToIgnoreCase(o2.getData().getFirstName());
-            }
+//            @Override
+//            public Comparator<? super RowComponent<Person>> getSortComparator() {
+//                return (o1, o2) -> o1.getData().getFirstName().compareToIgnoreCase(o2.getData().getFirstName());
+//            }
 
             @Override
             public String getValue(Person object) {
@@ -362,10 +362,10 @@ public class DataTablePage extends AbstractPage {
         }, "Username");
 
         table.addColumn(new TextColumn<Person>() {
-            @Override
-            public Comparator<? super RowComponent<Person>> getSortComparator() {
-                return (o1, o2) -> o1.getData().getFirstName().compareToIgnoreCase(o2.getData().getFirstName());
-            }
+//            @Override
+//            public Comparator<? super RowComponent<Person>> getSortComparator() {
+//                return (o1, o2) -> o1.getData().getFirstName().compareToIgnoreCase(o2.getData().getFirstName());
+//            }
 
             @Override
             public String getValue(Person object) {
@@ -374,10 +374,10 @@ public class DataTablePage extends AbstractPage {
         }, "First Name");
 
         table.addColumn(new TextColumn<Person>() {
-            @Override
-            public Comparator<? super RowComponent<Person>> getSortComparator() {
-                return (o1, o2) -> o1.getData().getLastName().compareToIgnoreCase(o2.getData().getLastName());
-            }
+//            @Override
+//            public Comparator<? super RowComponent<Person>> getSortComparator() {
+//                return (o1, o2) -> o1.getData().getLastName().compareToIgnoreCase(o2.getData().getLastName());
+//            }
 
             @Override
             public String getValue(Person object) {
@@ -407,7 +407,7 @@ public class DataTablePage extends AbstractPage {
         table.addRowExpandHandler((e, rowExpand) -> {
             JQueryElement section = rowExpand.getOverlay();
 
-            if (rowExpand.isExpand()) {
+            if (true) {
                 // Fake Async Task
                 // This is demonstrating a fake asynchronous call to load
                 // the data inside the expansion element.

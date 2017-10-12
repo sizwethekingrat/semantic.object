@@ -6,9 +6,9 @@ import gwt.material.design.client.data.factory.CategoryComponentFactory;
 
 public class CustomCategoryFactory extends CategoryComponentFactory {
 
-    @Override
+    //@Override
     public CategoryComponent generate(String categoryName) {
-        CategoryComponent category = super.generate(categoryName);
+        CategoryComponent category = super.generate(null, categoryName);
 
         if (!(category instanceof OrphanCategoryComponent)) {
             category = new CustomCategoryComponent(categoryName);

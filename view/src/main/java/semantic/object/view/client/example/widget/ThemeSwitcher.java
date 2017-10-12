@@ -1,7 +1,7 @@
 package semantic.object.view.client.example.widget;
 
 import com.google.gwt.user.client.ui.Composite;
-import gwt.material.demo.errai.client.ThemeManager;
+import semantic.object.view.client.example.ThemeManager;
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.themes.amber.ThemeAmber;
 import gwt.material.design.themes.blue.ThemeBlue;

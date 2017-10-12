@@ -1,10 +1,10 @@
 package semantic.object.view.client.example.page.addins;
 
-import gwt.material.demo.errai.client.dto.DataHelper;
-import gwt.material.demo.errai.client.dto.State;
-import gwt.material.demo.errai.client.dto.TimeZone;
-import gwt.material.demo.errai.client.page.AbstractPage;
-import gwt.material.demo.errai.client.page.PageCategory;
+import semantic.object.view.client.example.dto.DataHelper;
+import semantic.object.view.client.example.dto.State;
+import semantic.object.view.client.example.dto.TimeZone;
+import semantic.object.view.client.example.page.AbstractPage;
+import semantic.object.view.client.example.page.PageCategory;
 import gwt.material.design.addins.client.combobox.MaterialComboBox;
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialModal;

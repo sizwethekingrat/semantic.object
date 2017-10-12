@@ -1,6 +1,6 @@
 package semantic.object.view.client.example.events;
 
-import gwt.material.demo.errai.client.page.PageCategory;
+import semantic.object.view.client.example.page.PageCategory;
 import gwt.material.design.client.constants.Color;
 
 public class PageChangeEvent {

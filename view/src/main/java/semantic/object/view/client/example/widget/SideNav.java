@@ -2,9 +2,9 @@ package semantic.object.view.client.example.widget;
 
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.Composite;
-import gwt.material.demo.errai.client.ThemeManager;
-import gwt.material.demo.errai.client.dto.DataHelper;
-import gwt.material.demo.errai.client.dto.Link;
+import semantic.object.view.client.example.ThemeManager;
+import semantic.object.view.client.example.dto.DataHelper;
+import semantic.object.view.client.example.dto.Link;
 import gwt.material.design.addins.client.avatar.MaterialAvatar;
 import gwt.material.design.addins.client.sideprofile.MaterialSideProfile;
 import gwt.material.design.client.constants.Color;

@@ -5,13 +5,13 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.RootPanel;
-import gwt.material.demo.errai.client.resources.AppResources;
-import gwt.material.demo.errai.client.widget.Footer;
-import gwt.material.demo.errai.client.widget.Header;
-import gwt.material.demo.errai.client.widget.Main;
-import gwt.material.demo.errai.client.widget.SideNav;
-import gwt.material.demo.errai.client.widget.Header;
-import gwt.material.demo.errai.client.widget.SideNav;
+import semantic.object.view.client.example.resources.AppResources;
+import semantic.object.view.client.example.widget.Footer;
+import semantic.object.view.client.example.widget.Header;
+import semantic.object.view.client.example.widget.Main;
+import semantic.object.view.client.example.widget.SideNav;
+import semantic.object.view.client.example.widget.Header;
+import semantic.object.view.client.example.widget.SideNav;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 import org.jboss.errai.ui.nav.client.local.Navigation;
 
@@ -40,7 +40,7 @@ public class Client extends Composite {
     protected void init() {
         StyleInjector.inject(AppResources.INSTANCE.appCss().getText());
         content.getContainer().add(navigation.getContentPanel());
-        gwt.material.demo.errai.client.ThemeManager.initialize();
+        semantic.object.view.client.example.ThemeManager.initialize();
         RootPanel.get().add(header);
         RootPanel.get().add(sideNav);
         RootPanel.get().add(content);

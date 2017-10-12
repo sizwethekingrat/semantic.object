@@ -1,8 +1,8 @@
 package semantic.object.view.client.example.page.addins;
 
-import gwt.material.demo.errai.client.page.AbstractPage;
-import gwt.material.demo.errai.client.page.PageCategory;
-import gwt.material.demo.errai.client.page.PageCategory;
+import semantic.object.view.client.example.page.AbstractPage;
+import semantic.object.view.client.example.page.PageCategory;
+import semantic.object.view.client.example.page.PageCategory;
 import gwt.material.design.addins.client.avatar.MaterialAvatar;
 import gwt.material.design.client.ui.MaterialTextBox;
 import org.jboss.errai.ui.nav.client.local.Page;
