@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package semantic.object;
+package semantic.object.domain;
 
 import semantic.object.domain.meta.parts.auxverbs.is;
 import semantic.object.domain.meta.parts.auxverbs.must;
@@ -21,6 +21,7 @@ public class User {
 
         public String password;
 
+        @is
         public boolean register(String name, String password){
             return name.equals(this.name) && password.equals(this.password);
         }

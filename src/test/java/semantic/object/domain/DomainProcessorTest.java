@@ -7,7 +7,6 @@ package semantic.object.domain;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import semantic.object.domain.domain;
 import com.google.common.truth.Truth;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -23,7 +22,6 @@ import java.net.URL;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import semantic.object.User;
 import java.util.List;
 
 /**

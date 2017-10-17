@@ -3,7 +3,6 @@ package semantic.object.dictionary.generator;
 import java.util.List;
 
 import org.eclipse.jdt.core.dom.*;
-import org.eclipse.jdt.internal.core.dom.NaiveASTFlattener;
 
 /**
  * Created by Sizwe on 2017-09-28.

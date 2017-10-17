@@ -21,34 +21,34 @@ import org.eclipse.jface.text.Document;
  * Created by Sizwe on 2017-10-16.
  */
 public class DomainWalker {
-    public Object execute(ExecutionEvent event) throws ExecutionException {
-        // Get the root of the workspace
-        IWorkspace workspace = ResourcesPlugin.getWorkspace();
-        IWorkspaceRoot root = workspace.getRoot();
-        // Get all projects in the workspace
-        IProject[] projects = root.getProjects();
-        // Loop over all projects
-        for (IProject project : projects) {
-            try {
-                printProjectInfo(project);
-            } catch (CoreException e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
-    }
+//    public Object execute(ExecutionEvent event) throws ExecutionException {
+//        // Get the root of the workspace
+//        IWorkspace workspace = ResourcesPlugin.getWorkspace();
+//        IWorkspaceRoot root = workspace.getRoot();
+//        // Get all projects in the workspace
+//        IProject[] projects = root.getProjects();
+//        // Loop over all projects
+//        for (IProject project : projects) {
+//            try {
+//                printProjectInfo(project);
+//            } catch (CoreException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return null;
+//    }
+//
+//    private void printProjectInfo(IProject project) throws CoreException,
+//            JavaModelException {
+//        System.out.println("Working in project " + project.getName());
+//        // check if we have a Java project
+//        if (project.isNatureEnabled("org.eclipse.jdt.core.javanature")) {
+//            IJavaProject javaProject = JavaCore.create(project);
+//            printPackageInfos(javaProject);
+//        }
+//    }
 
-    private void printProjectInfo(IProject project) throws CoreException,
-            JavaModelException {
-        System.out.println("Working in project " + project.getName());
-        // check if we have a Java project
-        if (project.isNatureEnabled("org.eclipse.jdt.core.javanature")) {
-            IJavaProject javaProject = JavaCore.create(project);
-            printPackageInfos(javaProject);
-        }
-    }
-
-    private void printPackageInfos(IJavaProject javaProject)
+    public static void printPackageInfos(IJavaProject javaProject)
             throws JavaModelException {
         IPackageFragment[] packages = javaProject.getPackageFragments();
         for (IPackageFragment mypackage : packages) {
@@ -67,7 +67,7 @@ public class DomainWalker {
         }
     }
 
-    private void printICompilationUnitInfo(IPackageFragment mypackage)
+    public static void printICompilationUnitInfo(IPackageFragment mypackage)
             throws JavaModelException {
         for (ICompilationUnit unit : mypackage.getCompilationUnits()) {
             printCompilationUnitDetails(unit);
@@ -75,14 +75,14 @@ public class DomainWalker {
         }
     }
 
-    private void printIMethods(ICompilationUnit unit) throws JavaModelException {
+    public static void printIMethods(ICompilationUnit unit) throws JavaModelException {
         IType[] allTypes = unit.getAllTypes();
         for (IType type : allTypes) {
             printIMethodDetails(type);
         }
     }
 
-    private void printCompilationUnitDetails(ICompilationUnit unit)
+    private static void printCompilationUnitDetails(ICompilationUnit unit)
             throws JavaModelException {
         System.out.println("Source file " + unit.getElementName());
         Document doc = new Document(unit.getSource());
@@ -90,7 +90,7 @@ public class DomainWalker {
         printIMethods(unit);
     }
 
-    private void printIMethodDetails(IType type) throws JavaModelException {
+    private static void printIMethodDetails(IType type) throws JavaModelException {
         IMethod[] methods = type.getMethods();
         for (IMethod method : methods) {
 
