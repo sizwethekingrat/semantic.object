@@ -65,7 +65,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 @Templated
-@Page(path = "home", role = DefaultPage.class)
+//@Page(path = "home", role = DefaultPage.class)
 public class HomePage {
 
     @Inject

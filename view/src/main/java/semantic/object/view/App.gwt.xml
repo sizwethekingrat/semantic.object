@@ -22,27 +22,33 @@
 
 <module rename-to="App">
 
-  <source path='client'/>
-  <source path='shared'/>
+    <source path='client'/>
+    <source path='shared'/>
 
-  <inherits name="gwt.material.design.GwtMaterialWithJQueryDebug"/>
-  <inherits name="gwt.material.design.themes.ThemeBlue"/>
-  <inherits name="gwt.material.design.themes.ThemeAmberResources"/>
-  <inherits name="gwt.material.design.themes.ThemeBlueResources"/>
-  <inherits name="gwt.material.design.themes.ThemeBrownResources"/>
-  <inherits name="gwt.material.design.themes.ThemeGreenResources"/>
-  <inherits name="gwt.material.design.themes.ThemeGreyResources"/>
-  <inherits name="gwt.material.design.themes.ThemeOrangeResources"/>
-  <inherits name="gwt.material.design.themes.ThemePinkResources"/>
-  <inherits name="gwt.material.design.themes.ThemePurpleResources"/>
-  <inherits name="gwt.material.design.themes.ThemeRedResources"/>
-  <inherits name="gwt.material.design.themes.ThemeYellowResources"/>
-  <inherits name="gwt.material.design.addins.GwtMaterialAddins"/>
-  <inherits name="gwt.material.design.GwtMaterialTableDebug"/>
-  <inherits name="org.jboss.errai.enterprise.All" />
+    <inherits name="gwt.material.design.GwtMaterialWithJQueryDebug"/>
+    <inherits name="gwt.material.design.themes.ThemeBlue"/>
+    <inherits name="gwt.material.design.themes.ThemeAmberResources"/>
+    <inherits name="gwt.material.design.themes.ThemeBlueResources"/>
+    <inherits name="gwt.material.design.themes.ThemeBrownResources"/>
+    <inherits name="gwt.material.design.themes.ThemeGreenResources"/>
+    <inherits name="gwt.material.design.themes.ThemeGreyResources"/>
+    <inherits name="gwt.material.design.themes.ThemeOrangeResources"/>
+    <inherits name="gwt.material.design.themes.ThemePinkResources"/>
+    <inherits name="gwt.material.design.themes.ThemePurpleResources"/>
+    <inherits name="gwt.material.design.themes.ThemeRedResources"/>
+    <inherits name="gwt.material.design.themes.ThemeYellowResources"/>
+    <inherits name="gwt.material.design.addins.GwtMaterialAddins"/>
+    <inherits name="gwt.material.design.GwtMaterialTableDebug"/>
+    <inherits name="org.jboss.errai.enterprise.All"/>
 
-  <set-property name="gwt.logging.enabled" value="TRUE" />
-  <set-property name="gwt.logging.consoleHandler" value="ENABLED" />
-  <set-property name="gwt.logging.logLevel" value="INFO" />
-  <set-property name="user.agent" value="gecko1_8"/>
+    <inherits name='com.ekotrope.gwt.CompletableFuture'/>
+
+    <inherits name="semantic.object.dom.api"/>
+
+    <inherits name='com.google.gwt.query.Query'/>
+
+    <set-property name="gwt.logging.enabled" value="TRUE"/>
+    <set-property name="gwt.logging.consoleHandler" value="ENABLED"/>
+    <set-property name="gwt.logging.logLevel" value="INFO"/>
+    <set-property name="user.agent" value="gecko1_8"/>
 </module>

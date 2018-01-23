@@ -18,7 +18,7 @@ public class CameraPage extends AbstractPage {
 
     @Override
     public String getDescription() {
-        return "MaterialCameraCapture is a widget that captures the video stream from the camera, using the MediaDevices.getUserMedia() (Streams API). This widget can capture images from the video, to allow the upload to the server of photos from the camera.";
+        return "MaterialCameraCapture is a widget that captures the video stream from the camera, using the MediaDevices.getUserMedia() (Streams API). This widget can capture images from the video, to allow the upload to the service of photos from the camera.";
     }
 
     @Override

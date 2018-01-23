@@ -9,6 +9,7 @@ import com.lightbend.lagom.javadsl.client.integration.LagomClientFactory;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import semantic.object.dom.api.DomService;
 import semantic.object.stream.api.StreamService;
 import semantic.object.hello.api.GreetingMessage;
 import semantic.object.hello.api.HelloService;
@@ -26,7 +27,7 @@ public class StreamIT {
     private static final String SERVICE_LOCATOR_URI = "http://localhost:9008";
 
     private static LagomClientFactory clientFactory;
-    private static HelloService helloService;
+    private static DomService helloService;
     private static StreamService streamService;
     private static ActorSystem system;
     private static Materializer mat;
@@ -35,7 +36,7 @@ public class StreamIT {
     public static void setup() {
         clientFactory = LagomClientFactory.create("integration-test", StreamIT.class.getClassLoader());
         // One of the clients can use the service locator, the other can use the service gateway, to test them both.
-        helloService = clientFactory.createDevClient(HelloService.class, URI.create(SERVICE_LOCATOR_URI));
+        helloService = clientFactory.createDevClient(DomService.class, URI.create(SERVICE_LOCATOR_URI));
         streamService = clientFactory.createDevClient(StreamService.class, URI.create(SERVICE_LOCATOR_URI));
 
         system = ActorSystem.create();
@@ -44,10 +45,10 @@ public class StreamIT {
 
     @Test
     public void helloWorld() throws Exception {
-        String answer = await(helloService.hello("foo").invoke());
+        String answer = await(helloService.getDom().invoke());
         assertEquals("Hello, foo!", answer);
-        await(helloService.useGreeting("bar").invoke(new GreetingMessage("Hi")));
-        String answer2 = await(helloService.hello("bar").invoke());
+        //await(helloService.useGreeting("bar").invoke(new GreetingMessage("Hi")));
+        String answer2 = await(helloService.getDom().invoke());
         assertEquals("Hi, bar!", answer2);
     }
 

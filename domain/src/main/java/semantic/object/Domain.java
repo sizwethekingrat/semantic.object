@@ -3,10 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package semantic.object.dom.api;
-
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArrayUtils;
+package semantic.object;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +12,7 @@ import java.util.List;
  *
  * @author Sizwe
  */
-public class Domain   extends JsonBuilder{
+public class Domain {
     //user object is mandatory and built into framework
     public Root user;
     //the application/game/business domains

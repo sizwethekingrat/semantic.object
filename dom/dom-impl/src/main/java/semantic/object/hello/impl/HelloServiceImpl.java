@@ -67,7 +67,7 @@ public class HelloServiceImpl implements HelloService {
       if (eventAndOffset.first() instanceof HelloEvent.GreetingMessageChanged) {
         HelloEvent.GreetingMessageChanged messageChanged = (HelloEvent.GreetingMessageChanged) eventAndOffset.first();
         eventToPublish = new semantic.object.hello.api.HelloEvent.GreetingMessageChanged(
-          messageChanged.getName(), messageChanged.getMessage()
+          messageChanged.name, messageChanged.message
         );
       } else {
         throw new IllegalArgumentException("Unknown event: " + eventAndOffset.first());

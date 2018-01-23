@@ -32,7 +32,7 @@ import org.jboss.errai.ui.nav.client.local.Navigation;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-@EntryPoint
+//@EntryPoint
 public class Client extends Composite{
 
     @Inject

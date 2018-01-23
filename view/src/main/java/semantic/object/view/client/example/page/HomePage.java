@@ -25,7 +25,7 @@ import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
 @Templated
-//@Page(path = "about", role = DefaultPage.class)
+@Page(path = "about", role = DefaultPage.class)
 public class HomePage extends AbstractPage {
 
     @Override

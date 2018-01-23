@@ -133,6 +133,12 @@
 			<version>${gwt.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.asayama.gwt.jquery</groupId>
+			<artifactId>gwt-jquery</artifactId>
+			<version>0.1.4</version>
+			<scope>provided</scope>
+		</dependency>
 		<!-- GwtMaterial -->
 		<dependency>
 			<groupId>com.github.gwtmaterialdesign</groupId>
@@ -154,6 +160,16 @@
 			<artifactId>gwt-material-table</artifactId>
 			<version>${gwt-material.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.googlecode.gwtquery</groupId>
+			<artifactId>gwtquery</artifactId>
+			<!-- Check last available version in the downloads page -->
+			<version>1.4.2</version>
+			<!-- If you are using old versions of gwt, uncomment the appropriate line -->
+			<!-- <classifier>2.1.0</classifier> -->
+			<!-- <classifier>2.0.1</classifier> -->
+			<scope>provided</scope>
+		</dependency>
 
 		<!-- Errai -->
 		<dependency>
@@ -172,6 +188,22 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>dom-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.lightbend.lagom</groupId>
+			<artifactId>lagom-javadsl-integration-client_${scala.binary.version}</artifactId>
+			<version>1.4.0-RC1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.lightbend.lagom</groupId>
+			<artifactId>lagom-javadsl-api_${scala.binary.version}</artifactId>
 		</dependency>
 
 		<dependency><groupId>com.google.guava</groupId><artifactId>guava-gwt</artifactId><scope>provided</scope></dependency>
@@ -210,10 +242,28 @@
 			<artifactId>errai-jboss-as-support</artifactId>
 			<scope>compile</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>com.ekotrope</groupId>
+			<artifactId>gwt-completablefuture</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<!-- This will add the source files to the jar, which is needed for GWT compile. -->
+				<directory>src/main/java/semantic/object/view/client/service</directory>
+			</resource>
+			<resource>
+				<!-- We also want the resources directory added -->
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<!-- This will add all of the auto-generated sources files, which is needed for GWT compile. -->
+				<directory>target/auto-generated-pojos</directory>
+			</resource>
+		</resources>
 		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
 
@@ -275,7 +325,7 @@
 
 				<configuration>
 					<runTarget>index.html</runTarget>
-					<extraJvmArgs>-Xmx1g -Xms756m -XX:CompileThreshold=1000</extraJvmArgs>
+					<extraJvmArgs>-Xmx2g -Xms756m -XX:CompileThreshold=1000</extraJvmArgs>
 					<hostedWebapp>src/main/webapp/</hostedWebapp>
 					<logLevel>INFO</logLevel>
 					<strict>true</strict>
