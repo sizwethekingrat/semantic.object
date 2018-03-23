@@ -61,8 +61,8 @@ public class DomainProcessorTest {
             System.out.println("process");
             System.out.println(System.getProperty("java.io.tmpdir"));
             String currentDir = System.getProperty("user.dir");
-            System.out.println(Paths.get("/src/main/java/semantic/object/User.java").toUri().toURL());
-            URL url = Paths.get("./src/main/java/semantic/object/User.java").toUri().toURL();
+            System.out.println(Paths.get("C:/dev/semantic.object/object/src/test/java/semantic/object/domain/User.java").toUri().toURL());
+            URL url = Paths.get("C:/dev/semantic.object/object/src/test/java/semantic/object/domain/User.java").toUri().toURL();
             Truth.assertAbout(JavaSourceSubjectFactory.javaSource())
                     .that(JavaFileObjects.forResource(url))
                     .processedWith(new domain.Processor())
@@ -81,7 +81,7 @@ public class DomainProcessorTest {
     public void testThatThatYouCanFindAWord(){
         try {
             ObjectMapper mapper = new ObjectMapper();
-            File file = new File("./src/main/resources/dictionary-master/dictionary.json");
+            File file = new File("src/main/resources/dictionary-master/dictionary.json");
             //JsonNode dictMap = new HashMap<String,Map>();
             JsonNode dictMap  = mapper.readTree(file);
             System.out.println(dictMap.get("student"));

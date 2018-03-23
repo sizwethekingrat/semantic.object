@@ -10,6 +10,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import semantic.object.dom.api.DomService;
+import semantic.object.dom.api.Domain;
 import semantic.object.stream.api.StreamService;
 import semantic.object.hello.api.GreetingMessage;
 import semantic.object.hello.api.HelloService;
@@ -45,10 +46,10 @@ public class StreamIT {
 
     @Test
     public void helloWorld() throws Exception {
-        String answer = await(helloService.getDom().invoke());
+        Domain answer = await(helloService.getDom().invoke());
         assertEquals("Hello, foo!", answer);
         //await(helloService.useGreeting("bar").invoke(new GreetingMessage("Hi")));
-        String answer2 = await(helloService.getDom().invoke());
+        Domain answer2 = await(helloService.getDom().invoke());
         assertEquals("Hi, bar!", answer2);
     }
 

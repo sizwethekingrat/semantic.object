@@ -24,7 +24,7 @@ public class DomainWalkerTest {
 
     @Test
     public void testPrintPackageData() throws FileNotFoundException {
-        FileInputStream in = new FileInputStream("E:/dev/NetBeansProjects/semantic.object/src/test/java/semantic/object/domain/User.java");
+        FileInputStream in = new FileInputStream("C:/dev/semantic.object/object/src/test/java/semantic/object/domain/User.java");
 
 
         CompilationUnit cu = JavaParser.parse(in);

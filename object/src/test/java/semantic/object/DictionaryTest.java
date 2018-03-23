@@ -9,11 +9,9 @@ import com.sun.tools.javac.util.Assert;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
+import org.junit.*;
+
 import static org.junit.Assert.*;
 import semantic.object.dictionary.generator.Definition;
 import semantic.object.dictionary.generator.PartOfSpeech;
@@ -47,6 +45,7 @@ public class DictionaryTest {
     // The methods must be annotated with annotation @Test. For example:
     //
      @Test
+     @Ignore
      public void TestGetDictionary() {
          try{
             Dictionary dict = new Dictionary();

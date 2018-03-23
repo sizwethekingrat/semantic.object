@@ -5,7 +5,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.query.client.Function;
 import com.google.gwt.query.client.GQuery;
 import org.jboss.errai.ioc.client.api.IOCProvider;
-import semantic.object.dom.api.Domain;
+import semantic.object.Domain;
 import javax.inject.Singleton;
 
 /**

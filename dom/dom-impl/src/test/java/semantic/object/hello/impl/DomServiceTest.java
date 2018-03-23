@@ -9,6 +9,8 @@ import static com.lightbend.lagom.javadsl.testkit.ServiceTest.defaultSetup;
 import static com.lightbend.lagom.javadsl.testkit.ServiceTest.withServer;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import semantic.object.dom.api.DomService;
 import semantic.object.dom.api.Domain;
@@ -18,7 +20,8 @@ import semantic.object.dom.api.Domain;
  * @author Sizwe
  */
 public class DomServiceTest {
-    @Test
+  @Ignore
+  @Test
   public void shouldReturnDomDescriptor() throws Exception {
     withServer(defaultSetup(), server -> {
       DomService service = server.client(DomService.class);

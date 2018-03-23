@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Sizwe
  */
-public class Domain   extends JsonBuilder{
+public class Domain {
     //user object is mandatory and built into framework
     public Root user;
     //the application/game/business domains

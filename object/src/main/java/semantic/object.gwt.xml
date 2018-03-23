@@ -1,0 +1,7 @@
+<module rename-to="semantic.object">
+    <!-- Specify the paths for translatable code -->
+    <!--<source path="object" />-->
+    <inherits name="com.google.gwt.user.User" />
+    <!--<inherits name="com.google.gwt.junit.JUnit" />-->
+    <!--<inherits name="org.sagebionetworks.SchemaToPojoLib" />-->
+</module>

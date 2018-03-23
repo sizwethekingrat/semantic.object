@@ -43,7 +43,7 @@
 
     <inherits name='com.ekotrope.gwt.CompletableFuture'/>
 
-    <inherits name="semantic.object.dom.api"/>
+    <!--<inherits name="semantic.object"/>-->
 
     <inherits name='com.google.gwt.query.Query'/>
 
