@@ -13,8 +13,9 @@ import java.util.stream.Collectors;
 import org.junit.*;
 
 import static org.junit.Assert.*;
-import semantic.object.dictionary.generator.Definition;
-import semantic.object.dictionary.generator.PartOfSpeech;
+import semantic.generator.Definition;
+import semantic.generator.Dictionary;
+import semantic.generator.PartOfSpeech;
 
 /**
  *

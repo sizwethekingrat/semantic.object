@@ -25,6 +25,8 @@
     <source path='client'/>
     <source path='shared'/>
 
+    <inherits name='com.ekotrope.gwt.CompletableFuture'/>
+    <inherits name="semantic.object"/>
     <inherits name="gwt.material.design.GwtMaterialWithJQueryDebug"/>
     <inherits name="gwt.material.design.themes.ThemeBlue"/>
     <inherits name="gwt.material.design.themes.ThemeAmberResources"/>
@@ -41,11 +43,9 @@
     <inherits name="gwt.material.design.GwtMaterialTableDebug"/>
     <inherits name="org.jboss.errai.enterprise.All"/>
 
-    <inherits name='com.ekotrope.gwt.CompletableFuture'/>
 
-    <!--<inherits name="semantic.object"/>-->
 
-    <inherits name='com.google.gwt.query.Query'/>
+<!--    <inherits name='com.google.gwt.query.Query'/>-->
 
     <set-property name="gwt.logging.enabled" value="TRUE"/>
     <set-property name="gwt.logging.consoleHandler" value="ENABLED"/>

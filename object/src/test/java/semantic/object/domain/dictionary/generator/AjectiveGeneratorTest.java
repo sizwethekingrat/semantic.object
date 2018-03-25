@@ -1,9 +1,9 @@
 package semantic.object.domain.dictionary.generator;
 
 import org.junit.Test;
-import semantic.object.dictionary.generator.AdjectiveGenerator;
-import semantic.object.dictionary.generator.Definition;
-import semantic.object.dictionary.generator.PartOfSpeech;
+import semantic.generator.AdjectiveGenerator;
+import semantic.generator.Definition;
+import semantic.generator.PartOfSpeech;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package semantic.object.dictionary.generator;
+package semantic.generator;
 
 import java.util.List;
 

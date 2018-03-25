@@ -22,19 +22,19 @@ public class Producer implements javax.inject.Provider<DomainService>{
             @Override
             public Domain get() {
                 Domain domain;
-                GQuery.getJSON("", null, new Function() {
-                    public void f() {
-                        // You can inspect arguments with this
-                        System.out.println(dumpArguments());
-
-                        // Create the bean, and wrap the json object read
-                        //domain = GWT.create(Domain.class);
-                        //.load(arguments(0));
-
-                        // toString in JsonBuilder returns the json string
-                        //System.out.println(b.toString());
-                    }
-                });
+//                GQuery.getJSON("", null, new Function() {
+//                    public void f() {
+//                        // You can inspect arguments with this
+//                        System.out.println(dumpArguments());
+//
+//                        // Create the bean, and wrap the json object read
+//                        //domain = GWT.create(Domain.class);
+//                        //.load(arguments(0));
+//
+//                        // toString in JsonBuilder returns the json string
+//                        //System.out.println(b.toString());
+//                    }
+//                });
                 return null;
             }
         };

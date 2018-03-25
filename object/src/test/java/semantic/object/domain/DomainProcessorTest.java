@@ -16,6 +16,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import com.google.testing.compile.JavaFileObjects;
 import com.google.testing.compile.JavaSourceSubjectFactory;
+import semantic.generator.Process;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -65,7 +67,7 @@ public class DomainProcessorTest {
             URL url = Paths.get("C:/dev/semantic.object/object/src/test/java/semantic/object/domain/User.java").toUri().toURL();
             Truth.assertAbout(JavaSourceSubjectFactory.javaSource())
                     .that(JavaFileObjects.forResource(url))
-                    .processedWith(new domain.Processor())
+                    .processedWith(new Process())
                     .compilesWithoutError();
                     //.and().generatesSources(JavaFileObjects.forResource("GeneratedHelloWorld.java"));
 

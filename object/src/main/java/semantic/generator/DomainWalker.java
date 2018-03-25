@@ -1,4 +1,4 @@
-package semantic.object.domain;
+package semantic.generator;
 //
 //import org.eclipse.core.commands.AbstractHandler;
 //import org.eclipse.core.commands.ExecutionEvent;
@@ -14,7 +14,6 @@ import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jface.text.Document;
 /**

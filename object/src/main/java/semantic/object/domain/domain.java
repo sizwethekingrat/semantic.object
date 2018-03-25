@@ -24,26 +24,5 @@ import semantic.object.domain.meta.parts.auxverb;
  */
 //@AutoService(Processor.class)
 public @interface domain{
-public class Processor extends AbstractProcessor{
-  private Types typeUtils;
-  private Elements elementUtils;
-  private Filer filer;
-  private Messager messager;
-  //private Map<String, FactoryGroupedClasses> factoryClasses = new LinkedHashMap<String, FactoryGroupedClasses>();
 
-  @Override
-  public synchronized void init(ProcessingEnvironment processingEnv) {
-    super.init(processingEnv);
-    typeUtils = processingEnv.getTypeUtils();
-    elementUtils = processingEnv.getElementUtils();
-    filer = processingEnv.getFiler();
-    messager = processingEnv.getMessager();
-  }
-    @Override
-    public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-           throw new UnsupportedOperationException();
-    }
-    
-}
-    
 }
