@@ -21,12 +21,7 @@
 
     <modules>
         <module>object</module>
-        <!--<module>dom</module>-->
-        <module>graph</module>
-        <module>domain</module>
-        <module>view</module>
-
-
+        <module>domain-maven-plugin</module>
     </modules>
 
     <organization>
@@ -34,122 +29,8 @@
         <name>Semantic Solutions</name>
     </organization>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <id>unpack-dependencies</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>unpack-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <excludeScope>system</excludeScope>
-                            <excludeGroupIds>junit,org.mockito,org.hamcrest</excludeGroupIds>
-                            <outputDirectory>${project.build.directory}/classes</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>default-compile</id>
-                        <configuration>
-                            <compilerArgument>-proc:none</compilerArgument>
-                            <includes>
-                                <include>semantic/object/domain/processor/DomainProcessor.java</include>
-                                <!--include dependencies required for LogMeCustomAnnotationProcessor -->
-                            </includes>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>compile-project</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <!-- Needed to run the plugin xjc en Java 8 or superior -->
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>properties-maven-plugin</artifactId>
-                <version>1.0-alpha-2</version>
-                <executions>
-                    <execution>
-                        <id>set-additional-system-properties</id>
-                        <goals>
-                            <goal>set-system-properties</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <properties>
-                        <property>
-                            <name>javax.xml.accessExternalSchema</name>
-                            <value>all</value>
-                        </property>
-                        <property>
-                            <name>javax.xml.accessExternalDTD</name>
-                            <value>all</value>
-                        </property>
-                    </properties>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>0.11.0</version>
-                <configuration>
-                    <schemaLanguage>DTD</schemaLanguage>
-                    <schemaIncludes>
-                        <include>*.dtd</include>
-                    </schemaIncludes>
-                    <args>
-                        <arg>-target</arg>
-                        <arg>2.0</arg>
-                    </args>
-   
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>                            
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.lightbend.lagom</groupId>
-                <artifactId>lagom-maven-dependencies</artifactId>
-                <version>${lagom.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.16.10</version>
-            </dependency>
             <dependency>
                 <groupId>com.github.javaparser</groupId>
                 <artifactId>javaparser-core</artifactId>
