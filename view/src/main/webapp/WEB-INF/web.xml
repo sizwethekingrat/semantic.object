@@ -1,51 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  #%L
-  GwtMaterial
-  %%
-  Copyright (C) 2015 - 2016 GwtMaterialDesign
-  %%
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-  
-       http://www.apache.org/licenses/LICENSE-2.0
-  
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
-  #L%
-  -->
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <display-name>Counter Web Application</display-name>
 
-<web-app>
-  <servlet>
-
-    <!-- NOTE: the integration-test profile uses this web.xml. Integration tests only work properly
-         with the DefaultBlockingServlet. If you change this setting, alter the integration-test
-         profile in pom.xml to use a different web.xml (for example, maybe src/tomcat/web.xml) -->
-    <servlet-name>ErraiServlet</servlet-name>
-    <servlet-class>org.jboss.errai.bus.server.servlet.DefaultBlockingServlet</servlet-class>
-        <init-param>
-          <param-name>auto-discover-services</param-name>
-          <param-value>true</param-value>
-        </init-param>
+    <servlet>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-      <servlet-name>ErraiServlet</servlet-name>
-      <url-pattern>*.erraiBus</url-pattern>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!--<servlet>-->
-      <!--<servlet-name>com_google_gwt_junit_server_JUnitHostImpl</servlet-name>-->
-      <!--<servlet-class>com.google.gwt.junit.service.JUnitHostImpl</servlet-class>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-      <!--<servlet-name>com_google_gwt_junit_server_JUnitHostImpl</servlet-name>-->
-      <!--<url-pattern>/App/junithost/*</url-pattern>-->
-    <!--</servlet-mapping>-->
 
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+    <welcome-file-list>
+        <welcome-file>www/index.html</welcome-file>
+    </welcome-file-list>
 </web-app>

@@ -20,7 +20,9 @@
     </properties>
 
     <modules>
+        <module>domain</module>
         <module>object</module>
+        <module>view</module>
         <module>domain-maven-plugin</module>
     </modules>
 

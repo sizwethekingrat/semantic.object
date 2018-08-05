@@ -43,10 +43,12 @@ public class Domain {
             public List<Field> fields = new ArrayList();
             //managed/linked objects/lists
             public List<Root> roots = new ArrayList();
+            //the actions associated with the view
+            public List<Event> events = new ArrayList();
 
             @Override
             public String toString() {
-                return "{fields:" + fields + ", roots:" + roots + '}';
+                return "{fields:" + fields + ", roots:" + roots +  ", events:" + events + '}';
             }
             
             
