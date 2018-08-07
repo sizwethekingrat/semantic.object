@@ -31,7 +31,7 @@
 
     <dependency>
       <groupId>semantic.object</groupId>
-      <artifactId>object</artifactId>
+      <artifactId>domain</artifactId>
       <version>${project.version}</version>
     </dependency>
 

@@ -14,8 +14,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jackson-2-version>2.9.1</jackson-2-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <scala.binary.version>2.12</scala.binary.version>
-        <lagom.version>1.4.0-RC1</lagom.version>
         <gwt.version>2.8.1</gwt.version>
         <jersey.version>2.26</jersey.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,6 +24,7 @@
         <module>domain-maven-plugin</module>
         <module>server</module>
         <module>client</module>
+        <module>user</module>
     </modules>
 
     <organization>

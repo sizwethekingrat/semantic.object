@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>object</artifactId>
+    <artifactId>domain</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -90,17 +90,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>gwt-maven-plugin</artifactId>
-                <version>2.8.1</version>
-                <!-- ... -->
-                <configuration>
-                    <compileSourcesArtifacts>
-                        <compileSourcesArtifact>semantic.object:Domain</compileSourcesArtifact>
-                    </compileSourcesArtifacts>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
@@ -108,25 +97,25 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>default-compile</id>
-                        <configuration>
-                            <compilerArgument>-proc:none</compilerArgument>
-                            <includes>
-                                <include>semantic/object/domain/processor/DomainProcessor.java</include>
-                                <!--include dependencies required for LogMeCustomAnnotationProcessor -->
-                            </includes>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>compile-project</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>default-compile</id>-->
+                        <!--<configuration>-->
+                            <!--<compilerArgument>-proc:none</compilerArgument>-->
+                            <!--<includes>-->
+                                <!--<include>semantic/object/domain/processor/DomainProcessor.java</include>-->
+                                <!--&lt;!&ndash;include dependencies required for LogMeCustomAnnotationProcessor &ndash;&gt;-->
+                            <!--</includes>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                    <!--<execution>-->
+                        <!--<id>compile-project</id>-->
+                        <!--<phase>compile</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>compile</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
             </plugin>
             <plugin>
                 <!-- Needed to run the plugin xjc en Java 8 or superior -->

@@ -8,12 +8,12 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>domain</artifactId>
+    <artifactId>server</artifactId>
     <packaging>war</packaging>
-    <name>domain</name>
+    <name>server</name>
 
     <build>
-        <finalName>domain</finalName>
+        <finalName>server</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

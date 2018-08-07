@@ -81,12 +81,11 @@ public class Domain {
         }
     }
 
-//    public final native Root getUserJS() /*-{
-//        return this.user;
-//    }-*/;
-//
-//    public final native List<Root> getRootsJS() /*-{
-//        return this.roots;
-//    }-*/;
-
+    @Override
+    public String toString() {
+        return "domain:{" +
+                "user:" + user +
+                ", roots:" + roots +
+                '}';
+    }
 }
