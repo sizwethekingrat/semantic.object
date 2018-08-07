@@ -23,9 +23,9 @@
 
     <modules>
         <module>domain</module>
-        <module>object</module>
-        <module>view</module>
         <module>domain-maven-plugin</module>
+        <module>server</module>
+        <module>client</module>
     </modules>
 
     <organization>
