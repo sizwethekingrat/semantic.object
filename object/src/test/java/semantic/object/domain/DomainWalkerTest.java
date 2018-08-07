@@ -7,6 +7,7 @@ import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.Ignore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import semantic.generator.DomainFileVisitor;
@@ -26,6 +27,7 @@ public class DomainWalkerTest {
 
     private static Logger logger = LoggerFactory.getLogger(DomainWalkerTest.class.getName());
     @Test
+    @Ignore
     public void testBasicImplicitDomain() throws FileNotFoundException {
         File pathIn = new File(".\\src\\test\\java\\semantic\\object\\domain\\implicit");
         File pathOut = new File(".\\target");
