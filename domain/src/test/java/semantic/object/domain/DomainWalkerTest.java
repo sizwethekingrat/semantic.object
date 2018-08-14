@@ -1,23 +1,19 @@
 package semantic.object.domain;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.javaparser.JavaParser;
-import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Ignore;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import semantic.generator.DomainFileVisitor;
 import semantic.object.Domain;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.nio.file.Files;
+import java.util.logging.Logger;
 
 
 /**
@@ -25,13 +21,13 @@ import java.nio.file.Files;
  */
 public class DomainWalkerTest {
 
-    private static Logger logger = LoggerFactory.getLogger(DomainWalkerTest.class.getName());
+    private static Logger logger = Logger.getLogger(DomainWalkerTest.class.getName());
     @Test
     @Ignore
     public void testBasicImplicitDomain() throws FileNotFoundException {
-        File pathIn = new File(".\\src\\test\\java\\semantic\\object\\domain\\implicit");
-        File pathOut = new File(".\\target");
-        File domainJSON = new File(".\\target\\domain.json");
+        File pathIn = new File(".");
+        File pathOut = new File(".");
+        File domainJSON = new File("domain.json");
         DomainFileVisitor pf = new DomainFileVisitor(pathIn, pathOut);
         try {
             Files.walkFileTree(pathIn.toPath(), pf);

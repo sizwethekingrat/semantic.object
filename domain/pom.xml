@@ -12,30 +12,22 @@
     <artifactId>domain</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.github.javaparser</groupId>
             <artifactId>javaparser-core</artifactId>
-            <version>3.6.3</version>
+            <version>3.6.17</version>
         </dependency>
 
         <dependency>
             <groupId>com.github.javaparser</groupId>
             <artifactId>javaparser-symbol-solver-core</artifactId>
-            <version>3.6.3</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.25</version>
+            <version>3.6.17</version>
         </dependency>
 
         <dependency>
@@ -45,31 +37,10 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.google.testing.compile</groupId>
-            <artifactId>compile-testing</artifactId>
-            <version>0.8</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>1.3</version>
-            <scope>test</scope>
-        </dependency>
         <!-- the core, which includes Streaming API, shared low-level abstractions (but NOT data-binding) -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>${jackson-2-version}</version>
-        </dependency>
-
-        <!-- Just the annotations; use this dependency if you want to attach annotations
-        to classes without connecting them to the code. -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
             <version>${jackson-2-version}</version>
         </dependency>
 
@@ -97,25 +68,6 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>default-compile</id>-->
-                        <!--<configuration>-->
-                            <!--<compilerArgument>-proc:none</compilerArgument>-->
-                            <!--<includes>-->
-                                <!--<include>semantic/object/domain/processor/DomainProcessor.java</include>-->
-                                <!--&lt;!&ndash;include dependencies required for LogMeCustomAnnotationProcessor &ndash;&gt;-->
-                            <!--</includes>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                    <!--<execution>-->
-                        <!--<id>compile-project</id>-->
-                        <!--<phase>compile</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>compile</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
             </plugin>
             <plugin>
                 <!-- Needed to run the plugin xjc en Java 8 or superior -->

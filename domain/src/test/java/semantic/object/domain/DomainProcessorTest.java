@@ -7,21 +7,12 @@ package semantic.object.domain;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.truth.Truth;
 import org.junit.*;
 
-import static org.junit.Assert.*;
-import com.google.testing.compile.JavaFileObjects;
-import com.google.testing.compile.JavaSourceSubjectFactory;
-import semantic.generator.Process;
+
 import semantic.object.domain.implicit.User;
 
 import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.file.Paths;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.List;
 
 /**
@@ -55,29 +46,7 @@ public class DomainProcessorTest {
     
     }
     
-    @org.junit.Test
-    @Ignore
-    public void testProcess() {
-        try {
-            System.out.println("process");
-            System.out.println(System.getProperty("java.io.tmpdir"));
-            String currentDir = System.getProperty("user.dir");
-            System.out.println(Paths.get("C:/dev/semantic.object/object/src/test/java/semantic/object/domain/User.java").toUri().toURL());
-            URL url = Paths.get("C:/dev/semantic.object/object/src/test/java/semantic/object/domain/User.java").toUri().toURL();
-            Truth.assertAbout(JavaSourceSubjectFactory.javaSource())
-                    .that(JavaFileObjects.forResource(url))
-                    .processedWith(new Process())
-                    .compilesWithoutError();
-                    //.and().generatesSources(JavaFileObjects.forResource("GeneratedHelloWorld.java"));
 
-                    
-             
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(DomainProcessorTest.class.getName()).log(Level.SEVERE, null, ex);
-            fail("The this failed");
-        }
-    }
-    
     @Test
     public void testThatThatYouCanFindAWord(){
         try {

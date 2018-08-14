@@ -12,11 +12,14 @@ import semantic.generator.DomainFileVisitor;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.logging.Logger;
 
 
 @Mojo(name="domain", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
 public class DomainMojo extends AbstractMojo
 {
+
+    private final static Logger LOGGER = Logger.getLogger(DomainMojo.class.getName());
 
     @Parameter(defaultValue = "${project.build.directory}", required = true)
     private File outputDirectory;
@@ -30,6 +33,9 @@ public class DomainMojo extends AbstractMojo
         File path = project.getBasedir();
         DomainFileVisitor pf = new DomainFileVisitor(project.getBasedir(), outputDirectory);
         try {
+            LOGGER.info("__________________");
+            LOGGER.info("      DOMIAN      ");
+            LOGGER.info("__________________");
             Files.walkFileTree(path.toPath(), pf);
             pf.buildDomain();
         } catch (IOException e) {

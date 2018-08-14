@@ -12,7 +12,7 @@ public class Domain {
     //user object is mandatory and built into framework
     public Root user;
     //the application/game/business domains
-    public List<Root> roots;
+    public List<Root> roots = new ArrayList<>();
 
 
     public static class Root {

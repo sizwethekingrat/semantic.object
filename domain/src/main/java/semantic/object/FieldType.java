@@ -13,5 +13,5 @@ public enum FieldType {
     text,
     date,
     number,
-    choice;
+    choice, data;
 }

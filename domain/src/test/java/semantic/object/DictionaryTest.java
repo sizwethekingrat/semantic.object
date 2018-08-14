@@ -5,7 +5,6 @@
  */
 package semantic.object;
 
-import com.sun.tools.javac.util.Assert;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -50,8 +49,8 @@ public class DictionaryTest {
      public void TestGetDictionary() {
          try{
             Dictionary dict = new Dictionary();
-            Assert.checkNonNull(dict.definitions);
-            Assert.check(dict.definitions.size()>0);
+            assertNotNull(dict.definitions);
+            assertTrue(dict.definitions.size()>0);
             
             Map<PartOfSpeech, List<Definition>> groupedDict = dict.definitions.stream().collect(Collectors.groupingBy(Definition::getPart_of_speech));
             
@@ -64,7 +63,6 @@ public class DictionaryTest {
              assertTrue(true);
          } catch (Exception e){
             e.printStackTrace();
-            Assert.error();
          }
      }
      
