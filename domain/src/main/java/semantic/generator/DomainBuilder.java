@@ -2,16 +2,12 @@ package semantic.generator;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
-import com.github.javaparser.ast.Node;
-import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
-import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.type.ClassOrInterfaceType;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import com.github.javaparser.resolution.declarations.ResolvedReferenceTypeDeclaration;
 import com.github.javaparser.resolution.types.ResolvedType;
-import com.github.javaparser.symbolsolver.javaparser.Navigator;
 import com.github.javaparser.symbolsolver.javaparsermodel.JavaParserFacade;
 import com.github.javaparser.symbolsolver.model.resolution.TypeSolver;
 import com.github.javaparser.symbolsolver.resolution.typesolvers.CombinedTypeSolver;
@@ -20,6 +16,9 @@ import com.github.javaparser.symbolsolver.resolution.typesolvers.ReflectionTypeS
 import semantic.object.Domain;
 import semantic.object.FieldType;
 import semantic.object.RootType;
+import semantic.object.domain.Root;
+import semantic.object.domain.root.Field;
+import semantic.object.domain.root.View;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,15 +38,19 @@ public class DomainBuilder {
 
     private CombinedTypeSolver combinedSolver;
 
-    private Map<CompilationUnit, Domain.Root> processedRoots;
+    private Map<CompilationUnit, Root> processedRoots;
 
-    public DomainBuilder(File javaSourceDirectory) {
+    public DomainBuilder(List<String> javaSourceDirectories) {
         TypeSolver reflectionTypeSolver = new ReflectionTypeSolver();
-        TypeSolver javaParserTypeSolver = new JavaParserTypeSolver(javaSourceDirectory);
         reflectionTypeSolver.setParent(reflectionTypeSolver);
         combinedSolver = new CombinedTypeSolver();
         combinedSolver.add(reflectionTypeSolver);
-        combinedSolver.add(javaParserTypeSolver);
+        javaSourceDirectories.forEach(javaSourceDirectoryString -> {
+            File javaSourceDirectory = new File(javaSourceDirectoryString);
+            LOGGER.info("Loading Source Files:" + javaSourceDirectory.getAbsolutePath());
+            TypeSolver javaParserTypeSolver = new JavaParserTypeSolver(javaSourceDirectory);
+            combinedSolver.add(javaParserTypeSolver);
+        });
         processedRoots = new HashMap<>();
     }
 
@@ -70,14 +73,14 @@ public class DomainBuilder {
     private void createImplicitDomain(Domain domain, List<CompilationUnit> compilationUnits) {
         List<CompilationUnit> rootDomains = findImplicitRootDomains(compilationUnits);
         if (rootDomains.size()>0){
-            List<Domain.Root> roots = rootDomains.stream().map(this::toDomain).collect(Collectors.toList());
+            List<Root> roots = rootDomains.stream().map(this::toDomain).collect(Collectors.toList());
             domain.roots.addAll(roots);
         }
     }
 
-    private Domain.Root toDomain(CompilationUnit compilationUnit) {
+    private Root toDomain(CompilationUnit compilationUnit) {
         LOGGER.info(compilationUnit.toString());
-        Domain.Root root = new Domain.Root();
+        Root root = new Root();
         root.name = compilationUnit.getType(0).getName().asString();
         root.type = RootType.top_level;
         root.view = createView(compilationUnit);
@@ -85,8 +88,8 @@ public class DomainBuilder {
         return root;
     }
 
-    private Domain.Root.View createView(CompilationUnit compilationUnit) {
-        Domain.Root.View view = new Domain.Root.View();
+    private View createView(CompilationUnit compilationUnit) {
+        View view = new View();
         List<FieldDeclaration> fieldDeclarations = compilationUnit.findAll(FieldDeclaration.class);
         fieldDeclarations.forEach(
                 fieldDeclaration->{
@@ -95,15 +98,19 @@ public class DomainBuilder {
         return view;
     }
 
-    private Domain.Root.Field createField(FieldDeclaration fieldDeclaration) {
-        Domain.Root.Field field = new Domain.Root.Field();
+    private Field createField(FieldDeclaration fieldDeclaration) {
+        Field field = new Field();
         ResolvedType resolvedType = JavaParserFacade.get(combinedSolver).convertToUsage(fieldDeclaration.getVariables().get(0).getType(), fieldDeclaration);
         field.name = fieldDeclaration.getVariable(0).getNameAsString();
         field.type = resolvedType.asReferenceType().getQualifiedName().equals("java.lang.String")
-                ? FieldType.text
+                ? FieldType.string
                 : resolvedType.asReferenceType().getQualifiedName().equals("java.lang.Boolean")
-                    ? FieldType.choice
+                    ? FieldType.boolean_field
                     : FieldType.data;
+        LOGGER.info(resolvedType.asReferenceType().getQualifiedName());
+        //todo: add typesolver to determine type of generic and build sub-roots, sub-root-lists and enum-lists
+        fieldDeclaration.getVariables().get(0).getType().asClassOrInterfaceType().getTypeArguments().ifPresent(types ->
+        types.forEach(type -> LOGGER.info(type.asString())));
         return field;
     }
 
@@ -157,9 +164,9 @@ public class DomainBuilder {
         return hasDomainAnnotation;
     }
 
-    private static class MethodVisitor extends VoidVisitorAdapter<Domain.Root> {
+    private static class MethodVisitor extends VoidVisitorAdapter<Root> {
         @Override
-        public void visit(MethodDeclaration n, Domain.Root arg) {
+        public void visit(MethodDeclaration n, Root arg) {
             /* here you can access the attributes of the method.
              this method will be called for all methods in this
              CompilationUnit, including inner class methods */

@@ -10,8 +10,11 @@ package semantic.object;
  * @author Sizwe
  */
 public enum FieldType {
-    text,
+    string,
     date,
-    number,
-    choice, data;
+    double_field,
+    boolean_field,
+    enum_field,
+    enum_list,
+    data;
 }

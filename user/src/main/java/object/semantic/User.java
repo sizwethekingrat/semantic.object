@@ -2,7 +2,7 @@ package object.semantic;
 
 
 
-import object.semantic.user.Wallet;
+import object.semantic.user.Account;
 
 import java.util.*;
 
@@ -22,7 +22,7 @@ public class User {
 
     public String givenName;
 
-    public Wallet wallet;
+    public List<Account> wallet;
 
     /**
      * Formats JSON {@link Map} response with {@link User} attributes.

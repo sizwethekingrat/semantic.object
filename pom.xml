@@ -25,8 +25,8 @@
         <module>domain</module>
         <module>domain-maven-plugin</module>
         <module>user</module>
-        <module>server</module>
-        <module>client</module>
+        <!--<module>server</module>-->
+        <!--<module>client</module>-->
     </modules>
 
     <organization>

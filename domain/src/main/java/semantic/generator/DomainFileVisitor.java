@@ -29,8 +29,7 @@ public class DomainFileVisitor
 
     private File fileWriteFolder;
 
-    public DomainFileVisitor(File javaSourceFolder, File fileWriteFolder){
-        LOGGER.info("reading from: " + javaSourceFolder.getAbsolutePath());
+    public DomainFileVisitor(List<String> javaSourceFolder, File fileWriteFolder){
         this.fileWriteFolder = fileWriteFolder;
         compilationUnitList = new ArrayList<>();
         domainBuilder = new DomainBuilder(javaSourceFolder);

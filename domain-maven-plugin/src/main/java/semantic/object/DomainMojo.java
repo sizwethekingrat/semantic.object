@@ -12,6 +12,7 @@ import semantic.generator.DomainFileVisitor;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.List;
 import java.util.logging.Logger;
 
 
@@ -31,7 +32,7 @@ public class DomainMojo extends AbstractMojo
         throws MojoExecutionException
     {
         File path = project.getBasedir();
-        DomainFileVisitor pf = new DomainFileVisitor(project.getBasedir(), outputDirectory);
+        DomainFileVisitor pf = new DomainFileVisitor((List<String>) project.getCompileSourceRoots(), outputDirectory);
         try {
             LOGGER.info("__________________");
             LOGGER.info("      DOMIAN      ");
