@@ -37,7 +37,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- the core, which includes Streaming API, shared low-level abstractions (but NOT data-binding) -->
+        <!-- the core, which includes Streaming API, shared low-level abstractions (but NOT root-binding) -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
