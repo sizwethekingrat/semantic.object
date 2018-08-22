@@ -26,10 +26,8 @@ public class DomainFileVisitor
 
     private DomainBuilder domainBuilder;
 
-    private File fileWriteFolder;
 
-    public DomainFileVisitor(List<String> javaSourceFolder, File fileWriteFolder){
-        this.fileWriteFolder = fileWriteFolder;
+    public DomainFileVisitor(List<String> javaSourceFolder){
         compilationUnitList = new ArrayList<>();
         domainBuilder = new DomainBuilder();
         domainBuilder.initialise(javaSourceFolder);
@@ -49,7 +47,7 @@ public class DomainFileVisitor
         return CONTINUE;
     }
 
-    private void writeDomain(Domain domain) {
+    public void writeDomain(Domain domain, File fileWriteFolder) {
         if ( !fileWriteFolder.exists() )
         {
             fileWriteFolder.mkdirs();
@@ -67,11 +65,9 @@ public class DomainFileVisitor
         }
     }
 
-
-    public void buildDomain() throws NoSuchFileException {
+    public Domain buildDomain() throws NoSuchFileException {
         if (compilationUnitList.size()>0) {
-            Domain domain = domainBuilder.build(domainBuilder, compilationUnitList);
-            writeDomain(domain);
+            return domainBuilder.build(domainBuilder, compilationUnitList);
         } else {
             throw new NoSuchFileException("No java files found to turn into domain");
         }

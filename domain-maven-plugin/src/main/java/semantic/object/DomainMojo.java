@@ -32,13 +32,13 @@ public class DomainMojo extends AbstractMojo
         throws MojoExecutionException
     {
         File path = project.getBasedir();
-        DomainFileVisitor pf = new DomainFileVisitor((List<String>) project.getCompileSourceRoots(), outputDirectory);
+        DomainFileVisitor pf = new DomainFileVisitor((List<String>) project.getCompileSourceRoots());
         try {
             LOGGER.info("__________________");
             LOGGER.info("      DOMIAN      ");
             LOGGER.info("__________________");
             Files.walkFileTree(path.toPath(), pf);
-            pf.buildDomain();
+            pf.writeDomain(pf.buildDomain(), outputDirectory);
         } catch (IOException e) {
             throw new MojoExecutionException( "Error finding dir " + path, e );
         }

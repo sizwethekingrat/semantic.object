@@ -81,11 +81,26 @@ public class DomainBuilder implements build {
     }
 
     public CompilationUnit findCompilationUnitForFieldDeclaration(FieldDeclaration field) {
-        compilationUnits.forEach(compilationUnit -> LOGGER.info("CUs: "+ compilationUnit.getType(0).getName().asString()));
+
         ResolvedType resolvedType = JavaParserFacade.get(getTypeSolver()).convertToUsage(field.getVariables().get(0).getType(), field);
-        LOGGER.info("Current Field: "+ resolvedType.asReferenceType().getQualifiedName());
-        return compilationUnits.stream()
-                .filter(cu -> cu.getType(0).getName().asString().equals(resolvedType.asReferenceType().getQualifiedName()))
-                .collect(Collectors.reducing((a, b) -> null)).get();
+
+        CompilationUnit unit = null;
+
+        if (resolvedType.asReferenceType().getQualifiedName().equals("java.util.List")) {
+            if (field.getVariable(0).getType().asClassOrInterfaceType().getTypeArguments().isPresent())
+                resolvedType = JavaParserFacade.get(getTypeSolver()).convertToUsage(field.getVariable(0).getType().asClassOrInterfaceType().getTypeArguments().get().get(0), field);
+        }
+        return searchCompilationUnits(resolvedType.asReferenceType().getQualifiedName());
+    }
+
+    private CompilationUnit searchCompilationUnits(String qualifiedTypeName){
+        for (CompilationUnit compilationUnit : compilationUnits) {
+            String qualifiedName = compilationUnit.getPackageDeclaration().get().getName()+"."+compilationUnit.getType(0).getName().asString();
+            LOGGER.info("CUs: " + qualifiedName +" vs: "+ qualifiedTypeName);
+            if (qualifiedName.equals(qualifiedTypeName)) {
+                return compilationUnit;
+            }
+        }
+        return null;
     }
 }

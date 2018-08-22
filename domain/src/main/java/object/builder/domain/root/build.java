@@ -14,7 +14,6 @@ public interface build {
         if (domainBuilder.getProcessedRoots().containsKey(compilationUnit)){
             return domainBuilder.getProcessedRoots().get(compilationUnit);
         }
-        LOGGER.info(compilationUnit.toString());
         Root root = new Root();
         root.name = compilationUnit.getType(0).getName().asString();
         root.type = rootType;
@@ -25,16 +24,13 @@ public interface build {
 
     default Root build(DomainBuilder domainBuilder, FieldDeclaration field, Type rootType){
         CompilationUnit compilationUnit = domainBuilder.findCompilationUnitForFieldDeclaration(field);
-        if (domainBuilder.getProcessedRoots().containsKey(compilationUnit)){
-            return domainBuilder.getProcessedRoots().get(compilationUnit);
+        if (compilationUnit!=null) {
+            if (domainBuilder.getProcessedRoots().containsKey(compilationUnit)) {
+                return domainBuilder.getProcessedRoots().get(compilationUnit);
+            }
+            return build(domainBuilder,compilationUnit, rootType);
         }
-        LOGGER.info(compilationUnit.toString());
-        Root root = new Root();
-        root.name = field.getVariable(0).getName().asString();
-        root.type = rootType;
-        root.view = new object.builder.domain.root.view.build(){}.build(domainBuilder, compilationUnit);
-        domainBuilder.getProcessedRoots().put(compilationUnit,root);
-        return root;
+        return null;
     }
 
 }

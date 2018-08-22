@@ -3,10 +3,7 @@ package object.builder.domain.root.view.field;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.resolution.types.ResolvedType;
 import com.github.javaparser.symbolsolver.javaparsermodel.JavaParserFacade;
-import com.github.javaparser.symbolsolver.model.resolution.TypeSolver;
-import object.builder.Domain;
 import object.builder.DomainBuilder;
-import object.builder.domain.root.View;
 import object.builder.domain.root.view.Field;
 
 import java.util.logging.Logger;
@@ -29,10 +26,7 @@ public interface build {
             default:
                 field.type = Type.unknown;
         }
-        LOGGER.info(resolvedType.asReferenceType().getQualifiedName());
-        //todo: add typesolver to determine type of generic and build sub-roots, sub-root-lists and enum-lists
-        fieldDeclaration.getVariables().get(0).getType().asClassOrInterfaceType().getTypeArguments().ifPresent(types ->
-                types.forEach(type -> LOGGER.info(type.asString())));
+
         return field;
     }
 }
