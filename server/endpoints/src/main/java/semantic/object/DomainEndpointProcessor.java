@@ -1,24 +1,23 @@
 package semantic.object;
 
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.inject.Inject;
 import javax.ws.rs.container.ContainerRequestContext;
-import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Configuration;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
+import object.builder.Domain;
 import org.glassfish.jersey.process.Inflector;
 import org.glassfish.jersey.server.model.ModelProcessor;
 import org.glassfish.jersey.server.model.Resource;
-import org.glassfish.jersey.server.model.ResourceMethod;
 import org.glassfish.jersey.server.model.ResourceModel;
 
 @Provider
 public class DomainEndpointProcessor implements ModelProcessor {
+
+    @Inject
+    private Domain domain;
 
     @Override
     public ResourceModel processResourceModel(ResourceModel resourceModel, Configuration configuration) {

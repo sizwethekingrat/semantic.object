@@ -1,6 +1,7 @@
 package semantic.object;
 
 
+import org.apache.maven.model.Resource;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
@@ -38,7 +39,9 @@ public class DomainMojo extends AbstractMojo
             LOGGER.info("      DOMIAN      ");
             LOGGER.info("__________________");
             Files.walkFileTree(path.toPath(), pf);
-            pf.writeDomain(pf.buildDomain(), outputDirectory);
+            Resource resource = (Resource) project.getResources().get(0);
+            LOGGER.info(resource.toString());
+            File domainDescriptorFile = pf.writeDomain(pf.buildDomain(), new File(resource.getDirectory()));
         } catch (IOException e) {
             throw new MojoExecutionException( "Error finding dir " + path, e );
         }

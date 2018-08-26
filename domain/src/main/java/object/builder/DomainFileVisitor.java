@@ -47,7 +47,7 @@ public class DomainFileVisitor
         return CONTINUE;
     }
 
-    public void writeDomain(Domain domain, File fileWriteFolder) {
+    public File writeDomain(Domain domain, File fileWriteFolder) {
         if ( !fileWriteFolder.exists() )
         {
             fileWriteFolder.mkdirs();
@@ -63,6 +63,7 @@ public class DomainFileVisitor
         {
             throw new RuntimeException( "Error creating file " + touch, e );
         }
+        return touch;
     }
 
     public Domain buildDomain() throws NoSuchFileException {
