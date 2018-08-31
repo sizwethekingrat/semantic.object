@@ -1,4 +1,4 @@
-package object.builder.domain.root.view.field;
+package object.builder.domain.root.field;
 
 public enum Type {
     string,

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface transact {
-    List<Transaction> transactions = new ArrayList<>();
+
     default Transaction transact(Map<String, Object> transaction){
         return new Transaction();
     }

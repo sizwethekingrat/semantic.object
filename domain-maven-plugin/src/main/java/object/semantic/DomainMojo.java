@@ -1,4 +1,4 @@
-package semantic.object;
+package object.semantic;
 
 
 import org.apache.maven.model.Resource;

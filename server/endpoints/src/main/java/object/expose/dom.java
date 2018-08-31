@@ -1,4 +1,4 @@
-package semantic.object;
+package object.expose;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

@@ -96,8 +96,8 @@ public class DomainBuilder implements build {
     private CompilationUnit searchCompilationUnits(String qualifiedTypeName){
         for (CompilationUnit compilationUnit : compilationUnits) {
             String qualifiedName = compilationUnit.getPackageDeclaration().get().getName()+"."+compilationUnit.getType(0).getName().asString();
-            LOGGER.info("CUs: " + qualifiedName +" vs: "+ qualifiedTypeName);
             if (qualifiedName.equals(qualifiedTypeName)) {
+                LOGGER.info("CUs: " + qualifiedName +" vs: "+ qualifiedTypeName);
                 return compilationUnit;
             }
         }

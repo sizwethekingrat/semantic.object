@@ -1,4 +1,4 @@
-package semantic.object;
+package object.expose;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import object.builder.Domain;

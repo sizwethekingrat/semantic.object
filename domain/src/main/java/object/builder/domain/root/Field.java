@@ -1,11 +1,14 @@
-package object.builder.domain.root.view;
+package object.builder.domain.root;
 
-import object.builder.domain.root.view.field.Type;
+import object.builder.domain.Thing;
+import object.builder.domain.root.field.Type;
 
 //the node element/building block
-public class Field {
-    public String name;
+public class Field extends Thing {
+
     public Type type;
+
+    public String value;
 
     @Override
     public String toString() {

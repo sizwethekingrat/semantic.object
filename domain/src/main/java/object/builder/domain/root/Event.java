@@ -1,13 +1,13 @@
-package object.builder.domain.root.view;
+package object.builder.domain.root;
 
 import object.builder.domain.Root;
+import object.builder.domain.Thing;
+import object.builder.domain.root.event.Type;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Event {
-
-    public String name;
+public class Event extends Thing {
 
     public Type type;
 

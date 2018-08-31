@@ -1,24 +1,23 @@
 package object.builder.domain;
 
-import object.builder.DomainBuilder;
-import object.builder.domain.root.build;
-import object.builder.domain.root.view.Event;
+import object.builder.domain.root.Event;
 import object.builder.domain.root.Type;
-import object.builder.domain.root.View;
+import object.builder.domain.root.Field;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Root {
+public class Root extends Thing {
 
     boolean printed = false;
 
-    public String name;
     //what we're dealing with
     public Type type;
-    //provides current state
-    public View view;
-    //provides behaviours/actions
+    //the properties associated with the object in context
+    public List<Field> fields = new ArrayList();
+    //managed/linked objects/lists
+    public List<Root> roots = new ArrayList();
+    //the actions associated with the view
     public List<Event> events = new ArrayList();
 
     @Override
@@ -27,7 +26,7 @@ public class Root {
             printed = true;
             return "{" + "name:\"" + name + "\", type:\"" + type + "\"}";
         }
-        return "{" + "name:\"" + name + "\", type:\"" + type + "\", view:" + view + ", events:" + events + '}';
+        return "{" + "name:\"" + name + "\", type:\"" + type + "fields:" + fields + ", roots:" + roots +  ", events:" + events + '}';
     }
 
 

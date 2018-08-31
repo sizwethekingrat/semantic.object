@@ -1,4 +1,4 @@
-package semantic.object;
+package object.expose;
 
 
 import javax.inject.Inject;

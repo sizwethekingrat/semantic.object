@@ -1,10 +1,10 @@
-package object.builder.domain.root.view.field;
+package object.builder.domain.root.field;
 
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.resolution.types.ResolvedType;
 import com.github.javaparser.symbolsolver.javaparsermodel.JavaParserFacade;
 import object.builder.DomainBuilder;
-import object.builder.domain.root.view.Field;
+import object.builder.domain.root.Field;
 
 import java.util.logging.Logger;
 
