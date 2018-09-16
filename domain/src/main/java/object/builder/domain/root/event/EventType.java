@@ -1,5 +1,5 @@
 package object.builder.domain.root.event;
 
-public enum Type {
+public enum EventType {
     button;
 }

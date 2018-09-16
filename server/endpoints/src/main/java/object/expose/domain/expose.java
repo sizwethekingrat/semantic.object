@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 public interface expose {
     default void expose(DomainResourceConfig resourceConfig, Root root){
-        resourceConfig.resourceBuilder.path(root.getNameSpace().asUrl());
+        resourceConfig.resourceBuilder.path(root.getNameSpace().getUrl());
 
         final ResourceMethod.Builder methodBuilder = resourceConfig.resourceBuilder.addMethod("GET");
         methodBuilder.produces(MediaType.APPLICATION_JSON_TYPE)

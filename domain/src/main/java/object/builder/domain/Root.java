@@ -1,7 +1,9 @@
 package object.builder.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import object.builder.domain.root.Event;
-import object.builder.domain.root.Type;
+import object.builder.domain.root.RootType;
 import object.builder.domain.root.Field;
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ public class Root extends Thing {
     boolean printed = false;
 
     //what we're dealing with
-    public Type type;
+    public RootType rootType;
     //the properties associated with the object in context
     public List<Field> fields = new ArrayList();
     //managed/linked objects/lists
@@ -24,9 +26,9 @@ public class Root extends Thing {
     public String toString() {
         if (printed){
             printed = true;
-            return "{" + "name:\"" + name + "\", type:\"" + type + "\"}";
+            return "{" + "type:\"" + type + "\", rootType:\"" + rootType + "\"}";
         }
-        return "{" + "name:\"" + name + "\", type:\"" + type + "fields:" + fields + ", roots:" + roots +  ", events:" + events + '}';
+        return "{" + "type:\"" + type + "\", rootType:\"" + rootType + "fields:" + fields + ", roots:" + roots +  ", events:" + events + '}';
     }
 
 

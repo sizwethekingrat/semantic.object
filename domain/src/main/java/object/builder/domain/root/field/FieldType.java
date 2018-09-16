@@ -1,6 +1,6 @@
 package object.builder.domain.root.field;
 
-public enum Type {
+public enum FieldType {
     string,
     date,
     double_field,

@@ -1,45 +1,151 @@
 {
   "user": {
-    "name": "User",
-    "type": "top_level",
-      "fields": [
-        {
-          "name": "userName",
-          "type": "string"
-        },
-        {
-          "name": "active",
-          "type": "string"
-        },
-        {
-          "name": "id",
-          "type": "string"
-        },
-        {
-          "name": "email",
-          "type": "string"
-        },
-        {
-          "name": "middleName",
-          "type": "string"
-        },
-        {
-          "name": "familyName",
-          "type": "string"
-        },
-        {
-          "name": "givenName",
-          "type": "string"
+    "type": "User",
+    "id": null,
+    "parent": null,
+    "rootType": "top_level",
+    "fields": [
+      {
+        "type": "familyName",
+        "id": null,
+        "parent": "User",
+        "fieldType": "string",
+        "value": null,
+        "nameSpace": {
+          "url": "User/familyName",
+          "basic": "User::familyName"
         }
-      ],
-      "roots": [],
-      "events": [
-        {
-          "name": null,
-          "type": null,
-          "parameters": [],
-          "dialogues": []
+      },
+      {
+        "type": "userName",
+        "id": null,
+        "parent": "User",
+        "fieldType": "string",
+        "value": null,
+        "nameSpace": {
+          "url": "User/userName",
+          "basic": "User::userName"
         }
-      ]
+      },
+      {
+        "type": "givenName",
+        "id": null,
+        "parent": "User",
+        "fieldType": "string",
+        "value": null,
+        "nameSpace": {
+          "url": "User/givenName",
+          "basic": "User::givenName"
+        }
+      },
+      {
+        "type": "middleName",
+        "id": null,
+        "parent": "User",
+        "fieldType": "string",
+        "value": null,
+        "nameSpace": {
+          "url": "User/middleName",
+          "basic": "User::middleName"
+        }
+      },
+      {
+        "type": "id",
+        "id": null,
+        "parent": "User",
+        "fieldType": "string",
+        "value": null,
+        "nameSpace": {
+          "url": "User/id",
+          "basic": "User::id"
+        }
+      },
+      {
+        "type": "active",
+        "id": null,
+        "parent": "User",
+        "fieldType": "boolean_field",
+        "value": null,
+        "nameSpace": {
+          "url": "User/active",
+          "basic": "User::active"
+        }
+      },
+      {
+        "type": "email",
+        "id": null,
+        "parent": "User",
+        "fieldType": "string",
+        "value": null,
+        "nameSpace": {
+          "url": "User/email",
+          "basic": "User::email"
+        }
+      }
+    ],
+    "roots": [
+      {
+        "type": "Account",
+        "id": null,
+        "parent": "User",
+        "rootType": "nested",
+        "fields": [
+          {
+            "type": "name",
+            "id": null,
+            "parent": "Account",
+            "fieldType": "string",
+            "value": null,
+            "nameSpace": {
+              "url": "User/Account/name",
+              "basic": "User::Account::name"
+            }
+          }
+        ],
+        "roots": [
+          null,
+          {
+            "type": "Transaction",
+            "id": null,
+            "parent": "Account",
+            "rootType": "nested",
+            "fields": [],
+            "roots": [
+              null,
+              null
+            ],
+            "events": [],
+            "nameSpace": {
+              "url": "User/Account/Transaction",
+              "basic": "User::Account::Transaction"
+            }
+          }
+        ],
+        "events": [],
+        "nameSpace": {
+          "url": "User/Account",
+          "basic": "User::Account"
+        }
+      }
+    ],
+    "events": [
+      {
+        "type": "toScimResource",
+        "id": null,
+        "parent": "User",
+        "eventType": "button",
+        "parameters": [],
+        "dialogues": [],
+        "nameSpace": {
+          "url": "User/toScimResource",
+          "basic": "User::toScimResource"
+        }
+      }
+    ],
+    "nameSpace": {
+      "url": "User",
+      "basic": "User"
     }
+  },
+  "roots": []
 }
