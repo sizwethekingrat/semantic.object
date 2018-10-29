@@ -16,7 +16,7 @@ import { store } from '../store.js';
 
 
 // These are the actions needed by this element.
-import { getAllProducts, addToCart } from '../actions/shop.js';
+import { getDomain, addToCart } from '../actions/shop.js';
 
 // These are the elements needed by this element.
 import { addToCartIcon } from './my-icons.js';
@@ -57,7 +57,7 @@ class ShopProducts extends connect(store)(LitElement) {
   }}
 
   _firstRendered() {
-    store.dispatch(getAllProducts());
+    store.dispatch(getDomain());
   }
 
   // This is called every time something is updated in the store.

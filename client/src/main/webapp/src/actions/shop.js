@@ -27,18 +27,12 @@ const PRODUCT_LIST = [
   {"id": 2, "title": diesel, "icon": dieselIcon, "price": 50, "inventory": 1000}
 ];
 
-export const getAllProducts = () => (dispatch, getState) => {
+export const getDomain = () => (dispatch, getState) => {
   // Here you would normally get the data from the server. We're simulating
   // that by dispatching an async action (that you would dispatch when you
   // succesfully got the data back)
 
-    console.log(petrolIcon[0].format); // 'image/jpeg'
-    console.log(petrolIcon[0].url); // url to image
-    console.log(petrolIcon[0].name);
-
-    console.log(dieselIcon[0].format); // 'image/jpeg'
-    console.log(dieselIcon[0].url); // url to image
-    console.log(petrolIcon[0].name);
+  const domain = import("../assets/test/domain");
 
     // You could reformat the data in the right format as well:
   const products = PRODUCT_LIST.reduce((obj, product) => {
@@ -48,7 +42,8 @@ export const getAllProducts = () => (dispatch, getState) => {
 
   dispatch({
     type: GET_PRODUCTS,
-    products: products
+    products: products,
+    domain: domain
   });
 };
 

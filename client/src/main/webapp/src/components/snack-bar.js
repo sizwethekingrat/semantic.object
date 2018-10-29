@@ -42,7 +42,7 @@ class SnackBar extends LitElement {
         }
       }
     </style>
-    <slot></slot>
+    <!--<slot></slot>-->
     `;
   }
 
