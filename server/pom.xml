@@ -13,6 +13,7 @@
     <name>server</name>
 
     <modules>
+        <module>events</module>
         <module>data</module>
         <module>endpoints</module>
     </modules>

@@ -1,5 +1,7 @@
 package object.builder.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +20,7 @@ public class NameSpace {
         Arrays.asList(part).forEach(one -> address.add(one));
     }
 
+    @JsonIgnore
     public String getBasic(){
         return address.stream().map(Object::toString).collect(Collectors.joining("::"));
     }
@@ -25,5 +28,7 @@ public class NameSpace {
     public String getUrl(){
         return address.stream().map(Object::toString).collect(Collectors.joining("/"));
     }
+
+
 
 }

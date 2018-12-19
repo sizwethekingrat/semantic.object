@@ -207,9 +207,7 @@ class Domain extends connect(store)(LitElement) {
 
     <!-- Main content -->
     <main role="main" class="main-content">
-      <my-view1 class="page" active?="${_page === 'view1'}"></my-view1>
-      <my-view2 class="page" active?="${_page === 'view2'}"></my-view2>
-      <my-view3 class="page" active?="${_page === 'view3'}"></my-view3>
+      <view class="page" active?="${_page === 'view3'}"></view>
       <my-view404 class="page" active?="${_page === 'view404'}"></my-view404>
     </main>
 
@@ -265,4 +263,4 @@ class Domain extends connect(store)(LitElement) {
     }
 }
 
-window.customElements.define('app-domain', Domain);
+window.customElements.define('domain-page', Domain);
