@@ -31,6 +31,8 @@ public class DomainEndpointProcessorTest {
     @org.junit.Test
     public void processResourceModel() {
         LOGGER.info(domainResourceConfig.toString());
+        domainResourceConfig.createUser();
+        domainResourceConfig.createDomian();
         LOGGER.info(domainResourceConfig.getResources().toString());
     }
 }

@@ -1,7 +1,5 @@
 package object.builder.domain;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import object.builder.domain.root.Event;
 import object.builder.domain.root.RootType;
 import object.builder.domain.root.Field;

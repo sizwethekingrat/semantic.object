@@ -14,8 +14,8 @@
 
     <modules>
         <module>events</module>
-        <module>data</module>
         <module>endpoints</module>
+        <module>graph</module>
     </modules>
 
 

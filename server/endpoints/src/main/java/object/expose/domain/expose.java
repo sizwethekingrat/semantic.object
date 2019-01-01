@@ -14,23 +14,12 @@ import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.MediaType;
 
 public interface expose {
-    default void expose(DomainResourceConfig resourceConfig, Root root){
+    default void expose(DomainResourceConfig resourceConfig, Root root, Inflector<ContainerRequestContext, String> inflector){
         resourceConfig.resourceBuilder.path(root.getNameSpace().getUrl());
 
         final ResourceMethod.Builder methodBuilder = resourceConfig.resourceBuilder.addMethod("GET");
         methodBuilder.produces(MediaType.APPLICATION_JSON_TYPE)
-                .handledBy(new Inflector<ContainerRequestContext, String>() {
-
-                    @Override
-                    public String apply(ContainerRequestContext containerRequestContext) {
-                        containerRequestContext.getRequest();
-                        try {
-                            return new ObjectMapper().writeValueAsString("");
-                        } catch (JsonProcessingException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                });
+                .handledBy(inflector);
 
         final Resource resource = resourceConfig.resourceBuilder.build();
         resourceConfig.registerResources(resource);
