@@ -21,7 +21,7 @@
 
         <dependency>
             <groupId>semantic.object</groupId>
-            <artifactId>data</artifactId>
+            <artifactId>graph</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

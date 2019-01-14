@@ -1,7 +1,7 @@
 package object.expose;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import object.builder.Domain;
+import object.build.Domain;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;

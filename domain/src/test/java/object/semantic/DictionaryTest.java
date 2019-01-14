@@ -12,9 +12,9 @@ import java.util.stream.Collectors;
 import org.junit.*;
 
 import static org.junit.Assert.*;
-import object.builder.Definition;
-import object.builder.Dictionary;
-import object.builder.PartOfSpeech;
+import object.build.Definition;
+import object.build.Dictionary;
+import object.build.PartOfSpeech;
 
 /**
  *

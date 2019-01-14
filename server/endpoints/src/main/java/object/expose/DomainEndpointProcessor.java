@@ -7,7 +7,7 @@ import javax.ws.rs.core.Configuration;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.Provider;
 
-import object.builder.Domain;
+import object.build.Domain;
 import org.glassfish.jersey.process.Inflector;
 import org.glassfish.jersey.server.model.ModelProcessor;
 import org.glassfish.jersey.server.model.Resource;
@@ -24,7 +24,7 @@ public class DomainEndpointProcessor implements ModelProcessor {
         // we get the resource model and we want to enhance each resource by OPTIONS method
         ResourceModel.Builder newResourceModelBuilder = new ResourceModel.Builder(false);
         for (final Resource resource : resourceModel.getResources()) {
-            // for each resource in the resource model we create a new builder which is based on the old resource
+            // for each resource in the resource model we create a new build which is based on the old resource
             final Resource.Builder resourceBuilder = Resource.builder(resource);
 
             // we add a new OPTIONS method to each resource
