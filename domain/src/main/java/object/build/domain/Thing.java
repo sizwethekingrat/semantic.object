@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @JsonIgnoreProperties(value={ "nameSpace" }, allowGetters=true)
 public class Thing {
 
-    public String id;
+    public Integer id;
 
     public Root parent;
 
@@ -20,11 +20,11 @@ public class Thing {
         NameSpace namespace;
         if (parent!=null)
             if (id!=null)
-                namespace = new NameSpace(parent.getNameSpace(), type, id);
+                namespace = new NameSpace(parent.getNameSpace(), type, id.toString());
             else
                 namespace = new NameSpace(parent.getNameSpace(), type);
         else if (id!=null)
-            namespace = new NameSpace(type, id);
+            namespace = new NameSpace(type, id.toString());
         else
             namespace = new NameSpace(type);
         return namespace;
@@ -46,5 +46,14 @@ public class Thing {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + type.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Thing{" +
+                "id=" + id +
+                ", parent=" + parent +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

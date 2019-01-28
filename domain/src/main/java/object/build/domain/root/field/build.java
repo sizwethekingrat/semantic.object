@@ -19,15 +19,17 @@ public interface build {
         field.type = fieldDeclaration.getVariable(0).getNameAsString();
         switch (resolvedType.asReferenceType().getQualifiedName()) {
             case "java.lang.String":
-                field.fieldType = FieldType.string;
+                field.fieldType = FieldType.typestr;
                 break;
             case "java.lang.Boolean":
-                field.fieldType = FieldType.boolean_field;
+                field.fieldType = FieldType.bln;
+                break;
+            case "java.lang.Integer":
+                field.fieldType = FieldType.lng;
                 break;
             default:
                 field.fieldType = FieldType.unknown;
         }
-
         return field;
     }
 }

@@ -4,51 +4,132 @@ package object;
 import object.build.domain.Root;
 import object.build.domain.root.Field;
 import org.neo4j.driver.v1.*;
+import org.neo4j.driver.v1.exceptions.ClientException;
 import org.neo4j.driver.v1.util.Pair;
 
 import javax.inject.Inject;
 
-import static org.neo4j.driver.v1.Values.ofBoolean;
 import static org.neo4j.driver.v1.Values.parameters;
-import java.util.List;
 
-public class Graph implements DomainGraph<Root> {
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Graph implements DomainGraph<Root>, AutoCloseable {
 
     @Inject
     private Driver driver;
 
     @Override
     public List<Root> list(Root root) {
-        return null;
+        List<Root> matches = new ArrayList<>();
+        try ( Session session = driver.session() )
+        {
+            StatementResult rootId = session.readTransaction(tx -> {
+                StatementResult result = getSearchStatementTemplate(tx, root);
+                System.out.println(result.summary());
+                return result;
+            });
+            while (rootId.hasNext())
+            {
+                Root found = new Root();
+                found.type = root.type;
+                List<Pair<String,Value>> values = rootId.next().fields();
+                for (Pair<String,Value> nameValue: values) {
+                    if ("r".equals(nameValue.key())) {
+                        buildRoot(root, nameValue);
+                    }
+                }
+                matches.add(found);
+            }
+        }
+        return matches;
+    }
+
+    private StatementResult getSearchStatementTemplate(Transaction tx, Root root) {
+        if (root.fields!=null && filterEmpty(root.fields).size()>0)
+            return tx.run("MATCH (r:"+root.type+") " +
+                        " WHERE " + setFilterParameters(filterEmpty(root.fields)) +
+                        "RETURN r",parameters(getParameters(filterEmpty(root.fields))));
+        return  tx.run("MATCH (r:"+root.type+") " +"RETURN r");
+    }
+
+    private List<Field> filterEmpty(List<Field> fields) {
+        return fields.stream().filter(field -> field.value != null).collect(Collectors.toList());
+    }
+
+
+    private String setFilterParameters(List<Field> fields) {
+        return fields.stream().map(field -> " r." + field.type +" =~ '.*$"+ field.type +".*' ").reduce((s, s2) -> s.concat(" OR  " + s2)).orElse("");
     }
 
     @Override
     public Root get(Root root) {
         try ( Session session = driver.session() )
         {
-            StatementResult rootId = session.readTransaction(tx -> {
+            Record rootId = session.readTransaction(tx -> {
                 StatementResult result = tx.run( "MATCH (r:"+root.type+") " +
                                 "where id(r) = $rootId "+
                                 "RETURN r",
-                        parameters( "rootId", Long.parseLong(root.id)) );
-                return result;
+                        parameters( "rootId", root.id) );
+                return result.single();
             });
-
-            if (rootId.hasNext())
-            {
-                List<Pair<String,Value>> values = rootId.next().fields();
-                for (Pair<String,Value> nameValue: values) {
-                    if ("r".equals(nameValue.key())) {
-                        Value value = nameValue.value();
-                        root.fields.forEach(field -> {
-                            System.out.println(value.get(field.type));
-                            field.value = value.get(field.type).asString();});
-                    }
+            List<Pair<String,Value>> values = rootId.fields();
+            for (Pair<String,Value> nameValue: values) {
+                if ("r".equals(nameValue.key())) {
+                    buildRoot(root, nameValue);
                 }
             }
-
         }
         return root;
+    }
+
+    private void buildRoot(Root root, Pair<String, Value> nameValue) {
+        Value value = nameValue.value();
+        root.fields.forEach(field -> {
+            if (!value.get(field.type).isNull()){
+                try {
+                    switch (field.fieldType) {
+                        case localdt:
+                            field.value = value.get(field.type).asLocalDate().toString();
+                            break;
+                        case bln:
+                            System.out.println(value.get(field.type));
+                            field.value = Boolean.toString(value.get(field.type).asBoolean());
+                            break;
+                        case typestr:
+                            field.value = value.get(field.type).asString();
+                            break;
+                        case enm:
+                            field.value = value.get(field.type).asString();
+                            break;
+                        case btarr:
+                            field.value = Base64.getEncoder().encodeToString(value.get(field.type).asByteArray());
+                            break;
+                        case lng:
+                            field.value = Long.toString(value.get(field.type).asLong());
+                            break;
+                        case dbl:
+                            field.value = Double.toString(value.get(field.type).asDouble());
+                            break;
+                        case unknown:
+                            field.value = value.get(field.type).asString();
+                            break;
+                        default:
+                            field.value = value.get(field.type).asString();
+                            break;
+                    }
+                }catch (org.neo4j.driver.v1.exceptions.value.Uncoercible ex){
+                    ex.printStackTrace();
+                    field.value = null;
+                }
+            } else {
+                field.value = null;
+            }
+         });
     }
 
     @Override
@@ -60,13 +141,12 @@ public class Graph implements DomainGraph<Root> {
                                 "where id(r) = $rootId "+
                                 setFields(root.fields) +
                                 "RETURN 0",
-                        parameters(getParameters(root.fields)) );
+                        parameters(getParameters(root.fields, "rootId", root.id)) );
                 tx.success();
                 return result.single().get( 0 ).asInt();
             });
             System.out.println( greeting );
-        };
-        root.id = null;
+        }
         return root;
     }
 
@@ -83,7 +163,7 @@ public class Graph implements DomainGraph<Root> {
                 }
                 return result.next().get(0).asInt();
             });
-            root.id = rootId.toString();
+            root.id = rootId;
         }
         return root;
     }
@@ -108,13 +188,44 @@ public class Graph implements DomainGraph<Root> {
         return result;
     }
 
-    private Object[] getParameters(List<Field> fields) {
-        Object[] array = new Object[fields.size()*2];
+    private Object[] getParameters(List<Field> fields, Object... keysAndValues) {
+        if (keysAndValues.length % 2 != 0) {
+            throw new ClientException("Get parameters function requires an even number of arguments, alternating key and value. Arguments were: " + Arrays.toString(keysAndValues) + ".");
+        }
+
+        Object[] array = new Object[fields.size()*2 + keysAndValues.length];
         for (int fieldIndex =0; fieldIndex <= (fields.size()*2)-1; fieldIndex = fieldIndex + 2){
             array[fieldIndex] = fields.get(fieldIndex/2).type;
-            array[fieldIndex+1] = fields.get(fieldIndex/2).value;
+            array[fieldIndex+1] = getByType(fields.get(fieldIndex/2));
+        }
+        for(int i = 0; i < keysAndValues.length; i += 2) {
+            array[(fields.size()*2) + i] = keysAndValues[i];
+            array[(fields.size()*2) + i +1] = keysAndValues[i + 1];
         }
         return array;
+    }
+
+    private Object getByType(Field field) {
+        switch (field.fieldType) {
+            case localdt:
+                return LocalDate.parse(field.value);
+            case bln:
+                return Boolean.valueOf(field.value);
+            case typestr:
+                return field.value;
+            case btarr:
+                return Base64.getDecoder().decode(field.value);
+            case enm:
+                return field.value;
+            case lng:
+                return Long.valueOf(field.value);
+            case dbl:
+                return Double.valueOf(field.value);
+            case unknown:
+                return field.value;
+            default:
+                return field.value;
+        }
     }
 
     private String setFields(List<Field> fields) {
@@ -122,22 +233,20 @@ public class Graph implements DomainGraph<Root> {
     }
 
 
-
     @Override
     public Root delete(Root root) {
         try ( Session session = driver.session() )
         {
-            String greeting = session.writeTransaction(tx -> {
+            int greeting = session.writeTransaction(tx -> {
                 StatementResult result = tx.run( "MATCH (r:"+root.type+") " +
                                 "where id(r) = $rootId "+
                                 "OPTIONAL MATCH (r)-[p]-() " + //TODO USE DETACH DELETE IN FUTURE
                                 "DELETE p,r",
-                        parameters( "rootId", Long.parseLong(root.id) ) );
+                        parameters( "rootId", root.id) );
                 tx.success();
-                return result.single().get( 0 ).asString();
+                return 0;
             });
-            System.out.println( greeting );
-        };
+        }
         root.id = null;
         return root;
     }
@@ -149,28 +258,5 @@ public class Graph implements DomainGraph<Root> {
         driver.close();
     }
 
-    public void printGreeting( final String message )
-    {
-        driver = GraphDatabase.driver( "bolt://localhost:7687", AuthTokens.basic( "neo4j", "anytime3IS3teatime" ) );
-
-        try ( Session session = driver.session() )
-        {
-            String greeting = session.writeTransaction( new TransactionWork<String>()
-            {
-                @Override
-                public String execute( Transaction tx )
-                {
-                    StatementResult result = tx.run( "CREATE (a:Greeting) " +
-                                    "SET a.message = $message " +
-                                    "RETURN a.message + ', from node ' + id(a)",
-                            parameters( "message", message ) );
-                    tx.success();
-                    return result.single().get( 0 ).asString();
-                }
-            } );
-            System.out.println( greeting );
-        }
-        driver.close();
-    }
 
 }

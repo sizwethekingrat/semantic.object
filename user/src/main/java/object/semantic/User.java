@@ -8,7 +8,6 @@ import java.util.*;
 
 public class User {
     // Unique ID as a UUID4 following the RFC 7643 requirement
-    public String id;
 
     public String email;
 
@@ -34,7 +33,6 @@ public class User {
         List<String> schemas = new ArrayList<>();
         schemas.add("urn:ietf:params:scim:schemas:core:2.0:User");
         returnValue.put("schemas", schemas);
-        returnValue.put("id", this.id);
         returnValue.put("active", this.active);
         returnValue.put("userName", this.userName);
 

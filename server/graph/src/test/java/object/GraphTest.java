@@ -13,6 +13,9 @@ import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
 
+import java.util.List;
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 @RunWith(Arquillian.class)
@@ -33,43 +36,27 @@ public class GraphTest {
     Domain domain;
 
     @org.junit.Test
-    public void list() {
-    }
-
-    @org.junit.Test
-    public void get() {
-    }
-
-    @org.junit.Test
-    public void put() {
-    }
-
-    @org.junit.Test
-    public void post() {
+    public void lifecycle() {
         Root root = domain.user;
         root.fields.forEach(field -> {
             field.value=java.util.UUID.randomUUID().toString();
         });
         assertTrue(greeter.post(root).id != null);
         greeter.get(root);
-        System.out.println(root);
+        System.out.println(root.id);
         root.fields.forEach(field -> {
             field.value=java.util.UUID.randomUUID().toString();
         });
         greeter.put(root);
         greeter.get(root);
-        System.out.println(root);
+
+        System.out.println(root.id);
+        greeter.delete  (root);
+        root.clear();
+        List<Root> allRoots = greeter.list(root);
+        System.out.println(allRoots.size());
+        assertTrue(allRoots.size()>0);
     }
-
-    @org.junit.Test
-    public void delete() {
-    }
-
-    @org.junit.Test
-    public void close() {
-    }
-
-
 
 //    @Test
 //    public void printGreeting() {

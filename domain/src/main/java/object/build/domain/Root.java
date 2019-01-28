@@ -23,12 +23,14 @@ public class Root extends Thing {
     @Override
     public String toString() {
         if (printed){
-            printed = true;
             return "{" + "type:\"" + type + "\", rootType:\"" + rootType + "\"}";
         }
-        return "{" + "type:\"" + type + "\", rootType:\"" + rootType + "fields:" + fields + ", roots:" + roots +  ", events:" + events + '}';
+        printed = true;
+        return "{" + "type:\"" + type + "\", rootType:\"" + rootType + "\", fields:" + fields + ", roots:" + roots +  ", events:" + events + '}';
     }
 
 
-
+    public void clear() {
+        fields.forEach(field -> field.value=null);
+    }
 }

@@ -15,7 +15,7 @@ public class Expose implements object.Expose<Field> {
         return new Inflector<ContainerRequestContext, String>() {
             @Override
             public String apply(ContainerRequestContext containerRequestContext) {
-                return ;
+                return "";
             }
         };
     }

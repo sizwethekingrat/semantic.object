@@ -27,12 +27,12 @@ public class DomainResourceConfig extends ResourceConfig implements object.Expos
     @Inject
     public DomainGraph<Root> graph;
 
-    @Inject
-    public DomainEvents events;
-
-    @Inject
-    @Named("field")
-    public object.Expose fieldExpose;
+//    @Inject
+//    public DomainEvents events;
+//
+//    @Inject
+//    @Named("field")
+//    public object.Expose fieldExpose;
 
     public final Resource.Builder resourceBuilder;
 
@@ -50,72 +50,56 @@ public class DomainResourceConfig extends ResourceConfig implements object.Expos
     }
 
     public Inflector<ContainerRequestContext, String> getGetInflector(Root root) {
-        return new Inflector<ContainerRequestContext, String>() {
-
-            @Override
-            public String apply(ContainerRequestContext containerRequestContext) {
-                containerRequestContext.getRequest();
-                try {
-                    if (containerRequestContext.getUriInfo().getPathParameters().getFirst("id").isEmpty()) {
-                        List<Root> object = graph.list(root);
-                        return new ObjectMapper().writeValueAsString(object);
-                    } else {
-                        Root object = graph.get(root);
-                        return new ObjectMapper().writeValueAsString(object);
-                    }
-                } catch (JsonProcessingException e) {
-                    throw new RuntimeException(e);
+        return containerRequestContext -> {
+            containerRequestContext.getRequest();
+            try {
+                if (containerRequestContext.getUriInfo().getPathParameters().getFirst("id").isEmpty()) {
+                    List<Root> object = graph.list(root);
+                    return new ObjectMapper().writeValueAsString(object);
+                } else {
+                    Root object = graph.get(root);
+                    return new ObjectMapper().writeValueAsString(object);
                 }
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
             }
         };
     }
 
 
     public Inflector<ContainerRequestContext, String> getPostInflector(Root root) {
-        return new Inflector<ContainerRequestContext, String>() {
-
-            @Override
-            public String apply(ContainerRequestContext containerRequestContext) {
-                containerRequestContext.getRequest();
-                try {
-                    Root object = graph.post(root);
-                    return new ObjectMapper().writeValueAsString(object);
-                } catch (JsonProcessingException e) {
-                    throw new RuntimeException(e);
-                }
+        return containerRequestContext -> {
+            containerRequestContext.getRequest();
+            try {
+                Root object = graph.post(root);
+                return new ObjectMapper().writeValueAsString(object);
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
             }
         };
     }
 
 
     public Inflector<ContainerRequestContext, String> getPutInflector(Root root) {
-        return new Inflector<ContainerRequestContext, String>() {
-
-            @Override
-            public String apply(ContainerRequestContext containerRequestContext) {
-                containerRequestContext.getRequest();
-                try {
-                    Root object = graph.put(root);
-                    return new ObjectMapper().writeValueAsString(object);
-                } catch (JsonProcessingException e) {
-                    throw new RuntimeException(e);
-                }
+        return containerRequestContext -> {
+            containerRequestContext.getRequest();
+            try {
+                Root object = graph.put(root);
+                return new ObjectMapper().writeValueAsString(object);
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
             }
         };
     }
 
     public Inflector<ContainerRequestContext, String> getDeleteInflector(Root root) {
-        return new Inflector<ContainerRequestContext, String>() {
-
-            @Override
-            public String apply(ContainerRequestContext containerRequestContext) {
-                containerRequestContext.getRequest();
-                try {
-                    Root object = graph.delete(root);
-                    return new ObjectMapper().writeValueAsString(object);
-                } catch (JsonProcessingException e) {
-                    throw new RuntimeException(e);
-                }
+        return containerRequestContext -> {
+            containerRequestContext.getRequest();
+            try {
+                Root object = graph.delete(root);
+                return new ObjectMapper().writeValueAsString(object);
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
             }
         };
     }
