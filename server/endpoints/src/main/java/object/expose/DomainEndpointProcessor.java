@@ -13,7 +13,7 @@ import org.glassfish.jersey.server.model.ModelProcessor;
 import org.glassfish.jersey.server.model.Resource;
 import org.glassfish.jersey.server.model.ResourceModel;
 
-@Provider
+//@Provider
 public class DomainEndpointProcessor implements ModelProcessor {
 
     @Inject

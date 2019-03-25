@@ -8,6 +8,7 @@ import org.neo4j.driver.v1.exceptions.ClientException;
 import org.neo4j.driver.v1.util.Pair;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import static org.neo4j.driver.v1.Values.parameters;
 
@@ -18,6 +19,7 @@ import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Named("defaultGraph")
 public class Graph implements DomainGraph<Root>, AutoCloseable {
 
     @Inject

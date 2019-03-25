@@ -1,16 +1,17 @@
 package object.expose;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.inject.Qualifier;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.ext.Provider;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import object.DomainGraph;
+import object.Graph;
 import object.build.Domain;
 import object.build.domain.Root;
+
 import org.glassfish.jersey.process.Inflector;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.model.Resource;
@@ -25,7 +26,8 @@ public class DomainResourceConfig extends ResourceConfig implements object.Expos
     private Domain domain;
 
     @Inject
-    public DomainGraph<Root> graph;
+    @Named("defaultGraph")
+    private Graph graph;
 
 //    @Inject
 //    public DomainEvents events;
@@ -40,8 +42,10 @@ public class DomainResourceConfig extends ResourceConfig implements object.Expos
 
     public DomainResourceConfig() {
         resourceBuilder = Resource.builder();
+        LOGGER.info("in constructor");
 
     }
+
 
     public void createDomian() {
         for (Root root:domain.roots){
@@ -50,6 +54,7 @@ public class DomainResourceConfig extends ResourceConfig implements object.Expos
     }
 
     public Inflector<ContainerRequestContext, String> getGetInflector(Root root) {
+
         return containerRequestContext -> {
             containerRequestContext.getRequest();
             try {
@@ -104,7 +109,9 @@ public class DomainResourceConfig extends ResourceConfig implements object.Expos
         };
     }
 
-    public void createUser(){
+    @PostConstruct
+    public void init(){
+        LOGGER.info("_______________________________________________________________Building Domain _____________________________________________");
         expose(this,domain.user);
     }
 

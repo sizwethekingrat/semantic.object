@@ -5,6 +5,7 @@ import object.build.domain.Root;
 import object.graph.Producer;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
@@ -26,7 +27,7 @@ public class GraphTest {
                 .addClass(Graph.class)
                 .addClass(Producer.class)
                 .addClass(DomainProducer.class)
-                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+                .addAsManifestResource(EmptyAsset.INSTANCE, ArchivePaths.create("beans.xml"));
     }
 
     @Inject

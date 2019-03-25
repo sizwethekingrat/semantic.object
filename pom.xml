@@ -37,17 +37,17 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.glassfish.jersey</groupId>
-                <artifactId>jersey-bom</artifactId>
-                <version>${jersey.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>org.glassfish.jersey</groupId>-->
+                <!--<artifactId>jersey-bom</artifactId>-->
+                <!--<version>${jersey.version}</version>-->
+                <!--<scope>import</scope>-->
+                <!--<type>pom</type>-->
+            <!--</dependency>-->
             <dependency>
                 <groupId>org.jboss.arquillian</groupId>
                 <artifactId>arquillian-bom</artifactId>
-                <version>1.4.0.Final</version>
+                <version>1.4.1.Final</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
