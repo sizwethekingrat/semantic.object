@@ -21,7 +21,7 @@
             <groupId>semantic.object</groupId>
             <artifactId>server</artifactId>
             <version>${project.version}</version>
-            <type>war</type>
+            <type>pom</type>
         </dependency>
     </dependencies>
     <build>

@@ -52,7 +52,7 @@ public class GraphTest {
         greeter.get(root);
 
         System.out.println(root.id);
-        greeter.delete  (root);
+        //greeter.delete  (root);
         root.clear();
         List<Root> allRoots = greeter.list(root);
         System.out.println(allRoots.size());

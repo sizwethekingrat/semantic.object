@@ -20,6 +20,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>server</artifactId>
+
         <groupId>semantic.object</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -75,14 +76,14 @@
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>
-                        <compilerId>jdt</compilerId>
+<!--                        <compilerId>jdt</compilerId>-->
                     </configuration>
                     <dependencies>
-                        <dependency>
-                            <groupId>org.eclipse.tycho</groupId>
-                            <artifactId>tycho-compiler-jdt</artifactId>
-                            <version>0.21.0</version>
-                        </dependency>
+<!--                        <dependency>-->
+<!--                            <groupId>org.eclipse.tycho</groupId>-->
+<!--                            <artifactId>tycho-compiler-jdt</artifactId>-->
+<!--                            <version>0.21.0</version>-->
+<!--                        </dependency>-->
                     </dependencies>
                 </plugin>
                 <plugin>
