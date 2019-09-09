@@ -2,7 +2,6 @@ package object.graph;
 
 
 import org.neo4j.graphdb.factory.GraphDatabaseSettings;
-import org.neo4j.ogm.drivers.embedded.driver.EmbeddedDriver;
 import org.neo4j.driver.v1.AuthTokens;
 import org.neo4j.driver.v1.GraphDatabase;
 import org.neo4j.driver.v1.Driver;
